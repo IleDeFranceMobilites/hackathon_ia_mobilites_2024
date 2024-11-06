@@ -15,9 +15,9 @@ Ce document va vous servir de guide tout au long de ce Hackathon et notamment da
 Il vous permet également
 
 ## Sommaire
-1. [Le programme]()
-2. [Les défis]()
-2. [Les ressources et les outils]()
+1. [Le programme](https://github.com/IleDeFranceMobilites/hackathon_ia_mobilites_2024?tab=readme-ov-file#le-programme)
+2. [Les défis](https://github.com/IleDeFranceMobilites/hackathon_ia_mobilites_2024?tab=readme-ov-file#les-d%C3%A9fis)
+2. [Les ressources et les outils](https://github.com/IleDeFranceMobilites/hackathon_ia_mobilites_2024?tab=readme-ov-file#les-ressources-et-les-outils)
 3. [Vos résultats]()
 
 ## Le programme
@@ -62,6 +62,47 @@ C'est une application web open-source développée par l’Insee conçue pour le
 
 ![Capture d'écran sélection du projet Onyxia](/images/projet-onyxia.png)
 
+Vous pouvez ensuite lancer des services, et les lier au repository de votre groupe.
+
+ Attention, les services ne sont pas stables si ils sont éteins, alors vous perdez leurs configurations. Voir [ce tutoriel](https://docs.onyxia.sh/user-doc/setting-up-your-dev-environment-in-onyxia) pour configurer automatiquement un sevice. 
+
 #### Les ressources à votre disposition
 
-Pour lancer le Notebook exemple RAG, suivez ce [lien](https://datalab.data-platform-self-service.net/launcher/ide/jupyter-python?autoLaunch=true&onyxia.friendlyName=%C2%ABpython-rag%C2%BB&init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2FIleDeFranceMobilites%2Fhackathon_mobilite%2Frefs%2Fheads%2Fmain%2Fscripts%2Finit_jupyter.sh&vault.secret=«project-key»)
+Vous disposez d'un certain nombre de ressources à votre disposition. Le but n'est pas de toute les consulter, mais qu'elle puissent vous faire gagner du temps lors de la production de vos projets. 
+
+##### Les données et documents
+
+Pour entraîner vos algorithmes, visualiser des données, utilser des APIs ou encore alimenter votre RAG on a sélectionner pour vous des **données et documents**. 
+
+Ils sont accessible [depuis ce lien](https://airtable.com/appGp6Hwf0NrmXQ9L/shrnmQYmL0lDKgS76/tblC8dlSqeplzyg0A). Vous pouvez **filtrer les données sur le défi qui vous intéresse**. Certaines ressources sont issues du [Catalogue PRIM](https://prim.iledefrance-mobilites.fr/fr), d'autres sont directement ajoutés dans les fichiers du projet Onyxia 'dlb-hackathon'.
+
+<img src="images/airtable.png" alt="liste des données" width="600"/>
+
+##### Les snippets de code
+
+Ces **[snippets de code](/notebooks/snippets_code.ipynb)** vont vous permettre de gagner du temps dans la prise en main des ressources à disposition et de l'écosystème data d'île-de-France Mobilités.
+
+#### Les exemples (notebook)
+
+Les équipe d'Île-de-France Mobilités ont préparé un **exemple de Retrieval Augemented Generation RAG** (de la base vectorielle à la requête), qui permet d'enrichir les connaissances d'un modèle de langage avec des données spécifiques. 
+
+Cet exemple est **disponible dans les deux notebooks** du [dossier dédié](/notebooks/).
+
+Vous pouvez **lancer les notebooks exemple RAG directement sur Onyxia**. Pour cela, suivez ce [lien](https://datalab.data-platform-self-service.net/launcher/ide/jupyter-python?autoLaunch=true&onyxia.friendlyName=%C2%ABpython-rag%C2%BB&init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2FIleDeFranceMobilites%2Fhackathon_mobilite%2Frefs%2Fheads%2Fmain%2Fscripts%2Finit_jupyter.sh&vault.secret=«project-key»)
+
+Le service se lance sur le projet actuellement ouvert dans votre instance Onyxia. Vous pouvez ouvrir le service dans l'espace dédié au Hackathon 'dlb-hackathon'.
+
+#### La documentation
+Au fur est à mesure des questions, nous ajouterons les liens vers les documentations pertinentes dans ce guide.
+
+## Vos résultats
+Vos projets viendront alimenter la communauté Data IA et mobilités. **Les réalisation seront publiées sous licences libres** (type MIT) et publiées sur **un répertoire en ligne**. 
+
+Concrètement, vous allez réaliser :
+- un support de présentation ;
+- le projet : des notebooks, applications, templates, jeux de données …
+- tout autre forme qui pourra valoriser votre projet ! 
+
+**Chaque équipe présentera son projet au jury à l’oral**, dans un temps limité.
+
+Vous serez guidés par les équipes d’organisation pour faire le pitche de votre projet !

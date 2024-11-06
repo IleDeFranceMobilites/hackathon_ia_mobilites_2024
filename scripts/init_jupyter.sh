@@ -10,6 +10,7 @@ git clone --depth 1 $REPO_URL $CLONE_DIR
 # Put relevant notebook in formation dir
 cp "${CLONE_DIR}/notebooks/vector_db_template.ipynb" "${WORK_DIR}"
 cp "${CLONE_DIR}/notebooks/rag_template.ipynb" "${WORK_DIR}"
+cp "${CLONE_DIR}/notebooks/snippets_code.ipynb" "${WORK_DIR}"
 cp -R "${CLONE_DIR}/notebooks/data" "${WORK_DIR}"
 cp -R "${CLONE_DIR}/notebooks/images" "${WORK_DIR}"
 
