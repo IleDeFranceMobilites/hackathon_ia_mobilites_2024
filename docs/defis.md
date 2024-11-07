@@ -2,6 +2,8 @@
 
 # Présentation des défis du Hackathon IA et Mobilités
 
+Cette page décrit les 4 défis du Hackathon IA et Mobilités. Lien vers [le guide du participant](https://github.com/IleDeFranceMobilites/hackathon_ia_mobilites_2024).
+
 ## Défi 1 - Améliorer l'accessibilité des services de mobilité
 
 ### Contexte
@@ -32,7 +34,7 @@ Chatbot IA qui permet de restituer des messages d’information trafic en Facile
 - Accessibilité des établissements recevant du public (ERP)
 - et d'autres !
 
-Les données publiées [sont accessibles ici](https://airtable.com/appGp6Hwf0NrmXQ9L/shrnmQYmL0lDKgS76). Vous pouvez utiliser un filtre pour voir les données spécifiques au Défi 1. D'autres données sont à venir !
+_Les données publiées [sont accessibles ici](https://airtable.com/appGp6Hwf0NrmXQ9L/shrnmQYmL0lDKgS76). Vous pouvez utiliser un filtre pour voir les données spécifiques au Défi 1. D'autres données sont à venir !_
 
 ### L'équipe type idéale
 
@@ -44,7 +46,7 @@ Pour répondre à ce défi, une diversité de profils seront utiles. Les compét
 | Ingénieur et ingénieure TAL      | Affiner le RAG          | 1            |
 | Ingénieur et ingénieure Data     | Mettre en place la base vectorielle                                              | 1            |
 | Designeuse UX et d'information   | Prise en compte des critères d'accessibilité dans la solution proposée | 1            |
-| Développeur mobile               |  Calculateur d'itinéraires accessibles                                                        | 1            |
+| Développeur et développeuse mobile               |  Calculateur d'itinéraires accessibles                                                        | 1            |
 
 ## Défi 2 - Construire une boîte à outils pour accélérer le développement de l’IA au service des usagers
 
@@ -65,7 +67,7 @@ L’objectif de ce défi est de développer une boîte à outils pour accélére
 Une application qui permet à partir d’une phrase en langage naturelle d’appeler des API des Île-de-France Mobilités
 
 ### Exemple de ressources à disposition
-Les données publiées [sont accessibles ici](https://airtable.com/appGp6Hwf0NrmXQ9L/shrnmQYmL0lDKgS76). Vous pouvez utiliser un filtre pour voir les données spécifiques au Défi 2. D'autres données sont à venir !
+_Les données publiées [sont accessibles ici](https://airtable.com/appGp6Hwf0NrmXQ9L/shrnmQYmL0lDKgS76). Vous pouvez utiliser un filtre pour voir les données spécifiques au Défi 2. D'autres données sont à venir !_
 
 - Catalogue Open Data d’Île-de-France Mobilités
 - Spécifications NETEX et GTFS
@@ -85,7 +87,7 @@ Pour répondre à ce défi, une diversité de profils seront utiles. Les compét
 | Développeurs et développeuses IA |   Développer les outils IA                                        | 3            
 | Ingénieur et ingénieure Data     | Mettre en place le pipeline de données et APIs                                             | 2            |
 | Designer et designeuse UX et d'information   | Prise en compte des critères d'accessibilité dans la solution proposée | 1            |
-| Développeur mobile               |  Intégrer l'IA dans les applications                                                        | 1            |
+| Développeur et développeuse mobile               |  Intégrer l'IA dans les applications                                                        | 1            |
 
 ## Défi 3 - Améliorer les prévisions au service des mobilités
 
@@ -106,7 +108,7 @@ Modèle de prédiction de l’affluence d’une ligne en fonction des données m
 
 
 ### Exemple de ressources à disposition
-Les données publiées [sont accessibles ici](https://airtable.com/appGp6Hwf0NrmXQ9L/shrnmQYmL0lDKgS76). Vous pouvez utiliser un filtre pour voir les données spécifiques au Défi 3. D'autres données sont à venir !
+_Les données publiées [sont accessibles ici](https://airtable.com/appGp6Hwf0NrmXQ9L/shrnmQYmL0lDKgS76). Vous pouvez utiliser un filtre pour voir les données spécifiques au Défi 3. D'autres données sont à venir !_
 
 - Historique des données de validation sur le réseau de surface et le réseau ferré
 - Nombre de validations par jour
@@ -141,7 +143,7 @@ L’objectif de ce défi est de développer des outils à base d’IA au service
 Templates de suggestions d’itinéraires en fonction des données de l’utilisateurs sur l’application Île-de-France Mobilités
 
 ### Exemple de ressources à disposition
-Les données publiées [sont accessibles ici](https://airtable.com/appGp6Hwf0NrmXQ9L/shrnmQYmL0lDKgS76). Vous pouvez utiliser un filtre pour voir les données spécifiques au Défi 4. D'autres données sont à venir !
+_Les données publiées [sont accessibles ici](https://airtable.com/appGp6Hwf0NrmXQ9L/shrnmQYmL0lDKgS76). Vous pouvez utiliser un filtre pour voir les données spécifiques au Défi 4. D'autres données sont à venir !_
 
 - API Prochains passages
 - API Messages Info Trafic
@@ -158,4 +160,4 @@ Les données publiées [sont accessibles ici](https://airtable.com/appGp6Hwf0Nrm
 | Développeurs et développeuses IA |   Développer  le produit IA                                        | 3            |         |
 | Ingénieur et ingénieure Data     | Prendre en main les données utilisateurs                                              | 1            |
 | Designeur et designeuse UX    | Intégration de l'IA dans des applications de mobilités | 1            |
-| Développeur mobile               |  Utiliser les données contexte des utilisateurs                                                        | 1            |
+| Développeur et dévelppeuse mobile               |  Utiliser les données contexte des utilisateurs                                                        | 1            |
