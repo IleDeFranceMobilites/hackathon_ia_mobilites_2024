@@ -39,7 +39,7 @@ Pendant ces deux jours, vous allez répondre en équipe de 4 à 7 personnes à u
 
 #### Le Slack
 
-C'est sur le slack qu'aurons lieu les principaux échanges ([lien d'invitation au slack](https://join.slack.com/t/dataiailedefr-mya4689/shared_invite/zt-2rrzfjd3m-IsWmRrtzk5GZSQN_q5elXA)). Chaque canal possède une description dans un message épinglé.
+C'est sur le slack qu'aurons lieu les principaux échanges ([lien d'invitation au slack](https://join.slack.com/t/dataiailedefr-mya4689/shared_invite/zt-2u2bo2v10-YcUO~FlnNwl~W0mLCZLBUQ)). Chaque canal possède une description dans un message épinglé.
 - **00-general** : pour échanger librement sur le Hackathon IA et Mobilités, et poser vos question à l'équipe d'organisation.
 - **01-welcome** : pour vous présenter quelques mots : vous, vos domaines d'expertise (votre profil), le défi qui vous intéresse et si vous être à la recherche d'une équipe
 - **03-ressources-outils-données** : pour échanger sur les ressources, outils et données mises à disposition par Île-de-France Mobilités dans le cadre du Hackathon IA et Mobilités
