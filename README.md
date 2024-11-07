@@ -26,14 +26,14 @@ Ce document va vous servir de guide tout au long de ce Hackathon et dans sa pahs
 
 ## Les défis
 
-Pendant ces deux jours, vous allez répondre en équipe de 4 à 7 personnes à un défi. L'objectif est de proposer un projet qui réponsdre à une des 4 défis proposés. [Les défis sont présentés dans ce document](/docs/defis.md). 
+Pendant ces deux jours, vous allez répondre en équipe de 4 à 7 personnes à un défi. L'objectif est de proposer un projet qui répondre à un des 4 défis proposés. [Les défis sont présentés dans ce document](/docs/defis.md). 
 
 - **Défi 1** - Améliorer l'**accessibilité** des services de mobilité
 - **Défi 2** - Construire une **boîte à outils** pour accélérer le développement de l’IA au service des usagers
 - **Défi 3** - Améliorer les **prévisions** au service des mobilités
 - **Défi 4** - **Personnaliser** l’expérience utilisateur des services numériques au voyageur
 
-Défi transveral frugalité : Comment la frugalité des systèmes d’IA utilisés peut-elle améliorer mon projet ?
+**Défi transveral frugalité** : Comment la frugalité des systèmes d’IA utilisés peut-elle améliorer mon projet ?
 
 ## Les ressources et les outils
 
@@ -44,7 +44,7 @@ C'est sur le slack qu'aurons lieu les principaux échanges ([lien d'invitation a
 - **01-welcome** : pour vous présenter quelques mots : vous, vos domaines d'expertise (votre profil), le défi qui vous intéresse et si vous être à la recherche d'une équipe
 - **03-ressources-outils-données** : pour échanger sur les ressources, outils et données mises à disposition par Île-de-France Mobilités dans le cadre du Hackathon IA et Mobilités
 - **04x-défis** : pour échanger sur les 4 défis proposés lors de ce hackathon
-- **05x-équipeX** : les canaux d'équipes seront créés au fur et à mesure de la constitution des équipes
+- **05x-équipe-nom-équipe** : les canaux d'équipes seront créés au fur et à mesure de la constitution des équipes
 
 Une fois ajouté sur le slack, **vous pouvez vous présenter dans le canal 01-welcome et vous mettre à la recherche d'une équipe** dans les canaux dédiés aux différents défis. 
 
