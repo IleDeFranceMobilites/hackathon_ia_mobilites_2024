@@ -109,9 +109,9 @@ Vos projets viendront alimenter la communauté Data IA et mobilités. **Les réa
 
 Concrètement, vous allez réaliser :
 - un support de présentation ;
-- le projet : des notebooks, applications, templates, jeux de données …
+- le projet : des notebooks, applications, templates, jeux de données … ;
 - tout autre forme qui pourra valoriser votre projet ! 
 
 **Chaque équipe présentera son projet au jury à l’oral**, dans un temps limité.
 
-Vous serez guidés par les équipes d’organisation pour faire le pitche de votre projet !
+Vous serez guidés par les équipes d’organisation pour pticher au mieux votre projet !
