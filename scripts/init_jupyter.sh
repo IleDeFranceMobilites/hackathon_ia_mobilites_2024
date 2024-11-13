@@ -11,6 +11,7 @@ git clone --depth 1 $REPO_URL $CLONE_DIR
 cp "${CLONE_DIR}/notebooks/vector_db_template.ipynb" "${WORK_DIR}"
 cp "${CLONE_DIR}/notebooks/rag_template.ipynb" "${WORK_DIR}"
 cp "${CLONE_DIR}/notebooks/snippets_code.ipynb" "${WORK_DIR}"
+cp "${CLONE_DIR}/notebooks/HIAM2024 - Guide utilisation stockage Onyxia.ipynb" "${WORK_DIR}"
 cp -R "${CLONE_DIR}/notebooks/data" "${WORK_DIR}"
 cp -R "${CLONE_DIR}/notebooks/images" "${WORK_DIR}"
 
@@ -21,4 +22,4 @@ pip install -r "${CLONE_DIR}/requirements.txt"
 rm -rf $CLONE_DIR
 
 # Open the relevant notebook when starting Jupyter Lab
-echo "c.LabApp.default_url = '/lab/tree/rag_template.ipynb'" >> /home/onyxia/.jupyter/jupyter_server_config.py
+echo "c.LabApp.default_url = '/lab/tree/snippets_code.ipynb'" >> /home/onyxia/.jupyter/jupyter_server_config.py
