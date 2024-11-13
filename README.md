@@ -95,9 +95,9 @@ Ces **[snippets de code](/notebooks/snippets_code.ipynb)** vont vous permettre d
 
 Les équipe d'Île-de-France Mobilités ont préparé un **exemple de Retrieval Augemented Generation RAG** (de la base vectorielle à la requête), qui permet d'enrichir les connaissances d'un modèle de langage avec des données spécifiques. 
 
-Cet exemple est **disponible dans les deux notebooks** du [dossier dédié](/notebooks/).
+Cet exemple est **disponible dans les notebooks** du [dossier dédié](/notebooks/).
 
-Vous pouvez **lancer les notebooks exemple RAG directement sur Onyxia**. Pour cela, suivez ce [lien.](https://datalab.data-platform-self-service.net/launcher/ide/jupyter-python?autoLaunch=true&onyxia.friendlyName=%C2%ABpython-rag%C2%BB&init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2FIleDeFranceMobilites%2Fhackathon_mobilite%2Frefs%2Fheads%2Fmain%2Fscripts%2Finit_jupyter.sh&vault.secret=«project-key»)
+Vous pouvez **lancer les notebooks exemple directement sur Onyxia**. Pour cela, **assurez vous d'être connectés sur Onyxia et d'être sur le projet "dlb-hackathon"**, suivez ce [lien.](https://datalab.data-platform-self-service.net/launcher/ide/jupyter-python?autoLaunch=true&onyxia.friendlyName=%C2%ABpython-rag%C2%BB&init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2FIleDeFranceMobilites%2Fhackathon_mobilite%2Frefs%2Fheads%2Fmain%2Fscripts%2Finit_jupyter.sh&vault.secret=«project-key»)
 
 Le service se lance sur le projet actuellement ouvert dans votre instance Onyxia. Vous pouvez ouvrir le service dans l'espace dédié au Hackathon 'dlb-hackathon'.
 
