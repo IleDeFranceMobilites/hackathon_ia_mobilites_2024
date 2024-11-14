@@ -18,6 +18,7 @@ Ce document va vous servir de guide tout au long de ce Hackathon et dans sa pahs
 2. [Les défis](https://github.com/IleDeFranceMobilites/hackathon_ia_mobilites_2024?tab=readme-ov-file#les-d%C3%A9fis)
 2. [Les ressources et les outils](https://github.com/IleDeFranceMobilites/hackathon_ia_mobilites_2024?tab=readme-ov-file#les-ressources-et-les-outils)
 3. [Vos résultats](https://github.com/IleDeFranceMobilites/hackathon_ia_mobilites_2024?tab=readme-ov-file#vos-r%C3%A9sultats)
+4. [La FAQ]()
 
 ## Le programme
 
@@ -115,3 +116,51 @@ Concrètement, vous allez réaliser :
 **Chaque équipe présentera son projet au jury à l’oral**, dans un temps limité.
 
 Vous serez guidés par les équipes d’organisation pour pticher au mieux votre projet !
+
+## Foire Aux Questions (FAQ)
+
+Cette FAQ regroupe les questions les plus fréquentes ou susceptibles d’être posées par les participant·e·s du hackathon. Elle sera enrichie au fur et à mesure selon les besoins.
+
+<details>
+<summary>1. Peut-on utiliser un autre environnement de développement que celui fourni par l’organisation ?</summary>
+</br>
+Vous pouvez tout à fait utiliser un environnement de développement en local (PyCharm, Neovim…), autre que le datalab Onyxia. Néanmoins, il est demandé aux participant·e·s de valider ce point en amont avec l’organisation de l’événement. En revanche, il est interdit d’utiliser des plateformes de type OpenAI, GCP, ou autre instance cloud/IA publique ou privée. Ces cas posent en effet la question du transfert à "l'extérieur" de certains jeux de données encore non publics.
+</details>
+</br>
+<details>
+<summary>2. Quelles données seront accessibles pour ce hackathon ?</summary>
+</br>
+Les données utiles aux défis sont accessibles via ce <a href="https://airtable.com/appGp6Hwf0NrmXQ9L/shrnmQYmL0lDKgS76">lien</a>. Vous aurez accès à des données déjà ouvertes et disponibles sur des portails open data, notamment le portail <a href="https://prim.iledefrance-mobilites.fr/fr/catalogue-data">PRIM</a>, mais également à des données exclusives au hackathon. C’est le cas par exemple des données Transilien, RATP, GPSEO, ou des données de validation plus récentes que celles actuellement publiées par IDFM. Pour ce qui concerne ces données exclusives au hackathon, le 6.5 du règlement exclut de les rendre publiques, de les copier, de les extraire à des fins privées ou de les partager à des tiers. 
+</details></br>
+<details>
+<summary>3. Les ressources mises à disposition par l’organisation seront-elles accessibles après le hackathon ?</summary>
+</br>
+Les données ouvertes spécifiquement pour le hackathon ne sont pas encore à un niveau de qualité qui permet de les partager en externe. Elles ne seront donc plus utilisables au terme de l’événement. Mais l'objectif est de les ouvrir rapidement dans la foulée du hackathon.
+</details></br>
+<details>
+<summary>4. Peut-on participer au hackathon si on ne peut pas être physiquement présent·e pendant les deux jours de l’événement ?</summary>
+</br>
+Non, il n’est pas possible de participer au hackathon si vous ne pouvez pas physiquement être présent·e avec votre équipe au Liberty Living Lab pendant les deux jours. Il nous paraît important d’être ensemble pendant cet événement, et de favoriser des échanges interpersonnels physiques. De notre point de vue, quand on participe à un hackathon, c’est aussi pour les rencontres qu’on peut y faire.
+</details></br>
+<details>
+<summary>5. Qu’est-il prévu pour la restauration pendant l’événement ?</summary>
+</br>
+L’organisation se charge de petits déjeuners d’accueil et des repas du midi. Il vous sera demandé vos préférences (par exemple végétarien ou non) en amont de l’événement. En revanche, nous ne prenons pas en charge les dîners. 
+</details></br>
+<details>
+<summary>6. Comment puis-je trouver une équipe ?</summary>
+</br>
+La constitution des équipes s’effectue en amont de l’événement. Certaines équipes sont déjà constituées, d’autres pas encore. Si vous n’avez pas d’équipe, nous vous recommandons de vous présenter dans le slack du hackathon et indiquer le défi qui vous intéresse le plus. Les échanges se font par ce canal. L’organisation aidera également à rapprocher les participant·e·s et les équipes en cours de constitution (n’hésitez pas à les contacter sur le slack).
+</details>
+</br>
+<details>
+<summary>7. Comment rejoindre le Slack de l’événement ?</summary>
+</br>
+Pour rejoindre le slack, il suffit de suivre ce <a href="https://join.slack.com/t/dataiailedefr-mya4689/shared_invite/zt-2u2bo2v10-YcUO~FlnNwl~W0mLCZLBUQ">lien</a>. Nous vous invitons à vous présenter dans le canal #01-welcome. Vous y trouverez les autres participant·e·s et tous les échanges passeront par cet outil.
+</details>
+</br>
+<details>
+<summary>8. Où puis-je trouver les infos pratiques, les ressources et les liens du hackathon ? </summary>
+</br>
+Vous trouverez le guide des participant·e·s sur notre <a href="https://github.com/IleDeFranceMobilites/hackathon_ia_mobilites_2024/tree/main">GitHub</a>. Il contient les informations pratiques (horaires, lieu, etc.), la description des défis proposés, le tuto pour se connecter à la plateforme Onyxia, des snippets de code… Bref, toutes les ressources dont vous aurez besoin !
+</details>
