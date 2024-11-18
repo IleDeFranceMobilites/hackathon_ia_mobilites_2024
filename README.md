@@ -99,9 +99,7 @@ Les équipe d'Île-de-France Mobilités ont préparé un **exemple de Retrieval 
 
 Cet exemple est **disponible dans les notebooks** du [dossier dédié](/notebooks/).
 
-Vous pouvez **lancer les notebooks exemple directement sur Onyxia**. Pour cela, **assurez vous d'être connectés sur Onyxia et d'être sur le projet "dlb-hackathon"** puis suivez ce [lien.](https://datalab.data-platform-self-service.net/launcher/ide/jupyter-python?autoLaunch=true&onyxia.friendlyName=%C2%ABpython-rag%C2%BB&init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2FIleDeFranceMobilites%2Fhackathon_mobilite%2Frefs%2Fheads%2Fmain%2Fscripts%2Finit_jupyter.sh&vault.secret=«project-key»)
-
-Le service se lance sur le projet actuellement ouvert dans votre instance Onyxia. Vous pouvez ouvrir le service dans l'espace dédié au Hackathon 'dlb-hackathon'.
+Vous pouvez **lancer les notebooks exemple directement sur Onyxia**. Pour cela, **assurez vous d'être connectés sur Onyxia et d'être sur le projet "dlb-hackathon"**, puis lancer un service type VSCODE-Python et importez-y les notebook exemples du dossier notebook de ce projet github.
 
 #### La documentation
 Au fur est à mesure des questions, nous ajouterons les liens vers les documentations pertinentes dans ce guide.
