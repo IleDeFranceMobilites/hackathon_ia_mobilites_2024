@@ -1,6 +1,6 @@
 # Hackathon IA et Mobilités 2024
 
-## Configuration générale des services pendant le hackathon
+## Configuration générale des services pendant le hackathon (rappels)
 
 Pour rappel, pendant le hackathon, l'ensemble des travaux seront à mener au sein du projet dlb-hackathon :
 
