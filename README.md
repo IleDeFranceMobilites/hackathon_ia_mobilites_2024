@@ -68,13 +68,14 @@ Vous pouvez ensuite lancer des services (par exemple un service Visual Studio Co
  Attention, les services ne sont pas stables si ils sont éteins, alors vous perdez leurs configurations. Voir [ce tutoriel](https://docs.onyxia.sh/user-doc/setting-up-your-dev-environment-in-onyxia) pour configurer automatiquement un sevice. 
 
 Les principaux services proposés : 
-| Nom du service | Description | Catégorie de service |
-|----------------|-------------|----------------------|
-| Jupyter python | IDE Jupyter avec les libraires data python pré-installées | Environnements de développement |
-| VSCode python | Visual Studio Code avec les libraire data python pré-installées | Environnements de développement |
-| Elastic | pour vos bases vectorielles et stockages de documents JSON | Base de données |
-| Cloudbeaver | pour vos bases de données | Base de données |
-| OpenWebIU | une interface web "no-code" (ou pas) pour créer des chatbots personnalisés à partir d'une grande diversité de modèles de langage | Spécifique au Hackathon |
+| Nom du service | Description | Catégorie de service | Espace de lancement |
+|----------------|-------------|----------------------|----------------------|
+| Jupyter python | IDE Jupyter avec les libraires data python pré-installées | Environnements de développement |dbl-hackathon : une instance par équipe|
+| VSCode python | Visual Studio Code avec les libraire data python pré-installées | Environnements de développement |dbl-hackathon : une instance par équipe|
+| Cloudbeaver | pour vos bases de données | Base de données |espace personnel (non partageable)|
+| OpenWebIU | une interface web "no-code" (ou pas) pour créer des chatbots personnalisés à partir d'une grande diversité de modèles de langage | Spécifique au Hackathon |dbl-hackathon : une instance par équipe|
+| Elastic | pour vos bases vectorielles et stockages de documents JSON | Base de données |dbl-hackathon : une instance commune à toutes les équipes|
+
 
 #### Les ressources à votre disposition
 
