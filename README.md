@@ -91,7 +91,7 @@ Ils sont accessible [depuis ce lien](https://airtable.com/appGp6Hwf0NrmXQ9L/shrn
 
 ##### Les snippets de code
 
-Ces **[snippets de code](/notebooks/snippets_code.ipynb)** vont vous permettre de gagner du temps dans la prise en main des ressources à disposition et de l'écosystème data d'île-de-France Mobilités.
+Ces **[snippets de code](/notebooks/HIAM2024 - Snippets de code.ipynb)** vont vous permettre de gagner du temps dans la prise en main des ressources à disposition et de l'écosystème data d'île-de-France Mobilités.
 
 #### Les exemples (notebook)
 
