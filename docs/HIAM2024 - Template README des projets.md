@@ -1,6 +1,6 @@
 # Template ReadMe des projets - [Nom du projet]
 
-Ce document est un exemple de README pour vos répertoire de code et pour présenter vos projets. Il vous aidera à faire vos diapositives pour le pitch. 
+Ce document est un exemple de README pour vos répertoire de code et pour présenter vos projets. Il vous aidera à faire vos [diapositives pour le pitch](https://drive.google.com/drive/folders/1vLBmRBrxpfShEAYoV-zvcG5gqgtjXH0v?usp=sharing). 
 
 > [!TIP]
 > En début de README, on décrit le projet, son but et son fonctionnement de manière très succinte.
