@@ -27,12 +27,12 @@ Ce document va vous servir de guide tout au long de ce Hackathon et dans sa phas
 | Heure  | Activité                                             |
 |--------|------------------------------------------------------|
 | 9h     | Accueil                                              |
-| 9h30   | Mot d’accueil de la présidente du jury Hélène Brisset|
+| 9h30   | Mot d’accueil de la présidente du Jury               |
 | 9h45   | Présentation de la plateforme et des ressources dédiées|
 | 10h05  | Rappels logistiques et installation                  |
 | 10h15  | Finalisation des équipes                             |
-| 10h45  | **Lancement des projets**                                |
-| 12h45  | Pause déjeuner                                       |
+| **10h45**| **Lancement des projets**                          |
+| *12h45*  | *Pause déjeuner*                                   |
 | 13h45  | Reprise des projets                                  |
 | 19h    | Fin de journée                                       |
 
@@ -41,12 +41,12 @@ Ce document va vous servir de guide tout au long de ce Hackathon et dans sa phas
 | Heure  | Activité                                             |
 |--------|------------------------------------------------------|
 | 8h     | Accueil, reprise des projets                         |
-| 12h30  | Pause déjeuner                                       |
+| *12h30*  | *Pause déjeuner*                                       |
 | 13h30  | Reprise des projets                                  |
-| 15h    | **Fin des travaux**                                      |
+| **15h**    | **Fin des travaux**                                  |
 | 15h15  | Pitchs                                               |
 | 16h20  | Délibérations                                        |
-| 16h50  | Mot de conclusion, annonce des résultats et photos avec les lauréat·e·s |
+| 16h50  | Mot de conclusion et annonce des résultats           |
 | 17h30  | Cocktail                                             |
 | 19h    | Fin de journée                                       |
 
@@ -130,7 +130,7 @@ Vous disposez d'un certain nombre de ressources à votre disposition. **Le but n
 
 | Ressource | Description | Lien |
 |-----------|-------------|------|
-| Les ressources IA | Accès aux ressources et modèles IA | [lien tuto Onyxia](/docs/HIAM2024%20-%20Organisation%20et%20lancement%20des%20services%20Onyxia.md) |
+| Les ressources IA | Accès aux ressources et modèles IA | [Lien secrets Onyxia](/docs/HIAM2024%20-%20Organisation%20et%20lancement%20des%20services%20Onyxia.md) |
 | Les données et documents | Liste de toutes les données et documents | [lien](https://airtable.com/appGp6Hwf0NrmXQ9L/shrnmQYmL0lDKgS76/tblC8dlSqeplzyg0A) |
 | Le notebooks de prise en main des données | Notebook pour prendre en main certains jeux de données | [lien](/notebooks/HIAM2024%20-%20Guide%20données%20hackathon.ipynb) |
 | Les snippets de code | Snippets de code pour rapidement prendre en main les APIs | [lien](https://github.com/IleDeFranceMobilites/hackathon_ia_mobilites_2024/blob/main/notebooks/HIAM2024%20-%20Snippets%20de%20code.ipynb) |
@@ -171,6 +171,8 @@ Vous avez également à disposition un [guide d'utilisation du stockage des donn
 Comme d'habitude, lisez les documentations en ligne des services utilisés !
 
 ## Vos résultats
+
+### Publier vos réalisation
 Vos projets viendront alimenter la communauté Data IA et mobilités. **Les réalisation seront publiées sous licences libres** (type MIT) et publiées sur **un répertoire de coce public** (Github ou Gitlab). 
 
 Concrètement, vous allez réaliser :
@@ -183,6 +185,18 @@ Concrètement, vous allez réaliser :
 Rappel : 
 - **Pour le README, veuillez [utiliser ce modèle](/docs/HIAM2024%20-%20Template%20README%20des%20projets.md)** (il vous servira pour l'envoi de votre projet à la fin du Hackathon).
 - Ajoutez le topic *hackathonidfm2024* à la description de votre répertoire (voir image ci-dessous)
+
+### Les prix
+
+- **🏆Premier Prix**
+- 🏆Deuxième Prix
+- 🏆Troisième Prix
+- 🍃Prix spécial frugalité
+
+Voici la grille qui sera remise au Jury (à titre indicatif, le Jury est souverain dans ses choix !)
+
+<img src="images/grille.png" alt="grille pour la restitution" width="400"/>
+
 
 ## Foire Aux Questions (FAQ)
 
