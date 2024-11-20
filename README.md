@@ -27,7 +27,7 @@ Ce document va vous servir de guide tout au long de ce Hackathon et dans sa pahs
 
 ## Les défis
 
-Pendant ces deux jours, vous allez répondre en équipe de 4 à 7 personnes à un défi. L'objectif est de proposer un projet qui répondre à un des 4 défis proposés. [Les défis sont présentés dans ce document](/docs/defis.md). 
+Pendant ces deux jours, vous allez répondre en équipe de 4 à 7 personnes à un défi. L'objectif est de proposer un projet qui répondre à un des 4 défis proposés. [Les défis sont présentés dans ce document](/docs/HIAM2024%20-%20Pr%C3%A9sentation%20des%20d%C3%A9fis.md). 
 
 - **Défi 1** - Améliorer l'**accessibilité** des services de mobilité
 - **Défi 2** - Construire une **boîte à outils** pour accélérer le développement de l’IA au service des usagers
