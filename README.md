@@ -10,7 +10,7 @@ C'est la question que vous allez vous poser les 21 et 22 novembre 2024 à Paris.
 
 Vous allez travailler en équipe afin de **faire émerger des idées et des prototypes afin d’explorer la pertinence de l'IA et d’en étudier l’usage et les limites dans le domaine de la mobilité.** Île-de-France Mobilités vous mets à disposition un certain nombre de ressources, dont un Datalab : Onyxia.
 
-Ce document va vous servir de guide tout au long de ce Hackathon et dans sa pahse de préparation.
+Ce document va vous servir de guide tout au long de ce Hackathon et dans sa phase de préparation.
 
 
 ## Sommaire
