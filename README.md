@@ -172,7 +172,7 @@ Comme d'habitude, lisez les documentations en ligne des services utilisés !
 
 ## Vos résultats
 
-### Publier vos réalisation
+### Publier vos réalisations
 Vos projets viendront alimenter la communauté Data IA et mobilités. **Les réalisation seront publiées sous licences libres** (type MIT) et publiées sur **un répertoire de coce public** (Github ou Gitlab). 
 
 Concrètement, vous allez réaliser :
@@ -185,6 +185,7 @@ Concrètement, vous allez réaliser :
 Rappel : 
 - **Pour le README, veuillez [utiliser ce modèle](/docs/HIAM2024%20-%20Template%20README%20des%20projets.md)** (il vous servira pour l'envoi de votre projet à la fin du Hackathon).
 - Ajoutez le topic *hackathonidfm2024* à la description de votre répertoire (voir image ci-dessous)
+- **Ajoutez le lien de votre répertoire** dans vos diapositives de pitch + vos canal slack en message épinglé
 
 ### Les prix
 
