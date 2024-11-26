@@ -1,0 +1,83 @@
+{
+    "users": [
+        {
+            "id": 1234,
+            "name": "Andrew Owen",
+            "age": 26,
+            "mail": "andrew.owen@mail.com"
+        },
+        {
+            "id": 1235,
+            "name": "Susan Que",
+            "age": 45,
+            "mail": "susan.que@mail.com"
+        },
+        {
+            "id": 1236,
+            "name": "John Doe",
+            "age": 53,
+            "mail": "john.doe@mail.com"
+        }
+    ],
+    "preferences": [
+        {
+            "userId": 1234,
+            "travelType": "Tourisme",
+            "bikeRating": 4,
+            "busRating": 3,
+            "metroRating": 5,
+            "walkRating": 2,
+            "travelPreference": "fast"
+        },
+        {
+            "userId": 1235,
+            "travelType": "Business",
+            "bikeRating": 3,
+            "busRating": 4,
+            "metroRating": 4,
+            "walkRating": 3,
+            "travelPreference": "comfortable"
+        },
+        {
+            "userId": 1236,
+            "travelType": "Leisure",
+            "bikeRating": 5,
+            "busRating": 2,
+            "metroRating": 3,
+            "walkRating": 4,
+            "travelPreference": "fast"
+        }
+    ],
+    "conversations": [
+        {
+            "userId": 1234,
+            "message": "Hello, how are you?",
+            "timestamp": "2022-01-01T10:00:00.000Z"
+        },
+        {
+            "userId": 1235,
+            "message": "Good morning, I need some assistance.",
+            "timestamp": "2022-01-02T09:30:00.000Z"
+        },
+        {
+            "userId": 1236,
+            "message": "Can you help me with my travel plans?",
+            "timestamp": "2022-01-03T11:15:00.000Z"
+        },
+        {
+            "userId": 1234,
+            "message": "What are the best places to visit?",
+            "timestamp": "2022-01-04T14:00:00.000Z"
+        },
+        {
+            "userId": 1235,
+            "message": "I have a meeting at 3 PM.",
+            "timestamp": "2022-01-05T08:45:00.000Z"
+        },
+        {
+            "userId": 1236,
+            "message": "Looking for a good restaurant.",
+            "timestamp": "2022-01-06T13:30:00.000Z"
+        }
+    ]
+}

@@ -1,0 +1,640 @@
+Directory Structure:
+-------------------
+/ 
+├── components/
+│   ├── chat/
+│   │   ├── chat.component.css
+│   │   ├── chat.component.html
+│   │   ├── chat.component.spec.ts
+│   │   └── chat.component.ts
+│   ├── directions/
+│   │   ├── directions.component.css
+│   │   ├── directions.component.html
+│   │   ├── directions.component.spec.ts
+│   │   └── directions.component.ts
+│   ├── header/
+│   │   ├── header.component.css
+│   │   ├── header.component.html
+│   │   ├── header.component.spec.ts
+│   │   └── header.component.ts
+│   ├── landing/
+│   │   ├── landing.component.css
+│   │   ├── landing.component.html
+│   │   ├── landing.component.spec.ts
+│   │   └── landing.component.ts
+│   └── preferences/
+│       ├── preferences.component.css
+│       ├── preferences.component.html
+│       ├── preferences.component.spec.ts
+│       └── preferences.component.ts
+├── app.component.css
+├── app.component.html
+├── app.component.spec.ts
+├── app.component.ts
+├── app.config.server.ts
+├── app.config.ts
+└── app.routes.ts
+
+File Contents:
+--------------
+File: ./app.component.spec.ts
+--------------------------------------------------
+Content of ./app.component.spec.ts:
+import { TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AppComponent],
+    }).compileComponents();
+  });
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it(`should have the 'frontend-angular' title`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('frontend-angular');
+  });
+
+  it('should render title', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, frontend-angular');
+  });
+});
+
+
+File: ./app.component.html
+--------------------------------------------------
+Content of ./app.component.html:
+<div>
+  <app-header></app-header>
+  <router-outlet></router-outlet>
+</div>
+
+File: ./app.component.ts
+--------------------------------------------------
+Content of ./app.component.ts:
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './components/header/header.component';
+
+@Component({
+  selector: 'app-root',
+  imports: [RouterOutlet, HeaderComponent],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+export class AppComponent {
+  title = 'frontend-angular';
+}
+
+
+File: ./app.config.server.ts
+--------------------------------------------------
+Content of ./app.config.server.ts:
+import { mergeApplicationConfig, ApplicationConfig } from '@angular/core';
+import { provideServerRendering } from '@angular/platform-server';
+import { appConfig } from './app.config';
+
+const serverConfig: ApplicationConfig = {
+  providers: [
+    provideServerRendering(),
+  ]
+};
+
+export const config = mergeApplicationConfig(appConfig, serverConfig);
+
+
+File: ./app.config.ts
+--------------------------------------------------
+Content of ./app.config.ts:
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter } from '@angular/router';
+
+import { routes } from './app.routes';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(withEventReplay())]
+};
+
+
+File: ./app.component.css
+--------------------------------------------------
+Content of ./app.component.css:
+
+
+File: ./app.routes.ts
+--------------------------------------------------
+Content of ./app.routes.ts:
+import { Routes } from '@angular/router';
+import { LandingComponent } from './components/landing/landing.component';
+import { PreferencesComponent } from './components/preferences/preferences.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { DirectionsComponent } from './components/directions/directions.component';
+
+export const routes: Routes = [
+  {
+    path: '',
+    component: LandingComponent,
+    title: 'Landing',
+  }, {
+    path: 'preferences',
+    component: PreferencesComponent,
+    title: 'Preferences',
+  },
+  {
+    path: 'chat',
+    component: ChatComponent,
+    title: 'Chat',
+  },
+  {
+    path: 'directions',
+    component: DirectionsComponent,
+    title: 'Directions',
+  }
+];
+
+
+File: components/header/header.component.ts
+--------------------------------------------------
+Content of components/header/header.component.ts:
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+@Component({
+  selector: 'app-header',
+  imports: [RouterLink],
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.css'
+})
+export class HeaderComponent {
+
+}
+
+
+File: components/header/header.component.spec.ts
+--------------------------------------------------
+Content of components/header/header.component.spec.ts:
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { HeaderComponent } from './header.component';
+
+describe('HeaderComponent', () => {
+  let component: HeaderComponent;
+  let fixture: ComponentFixture<HeaderComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [HeaderComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(HeaderComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+
+
+File: components/header/header.component.html
+--------------------------------------------------
+Content of components/header/header.component.html:
+<header>
+	<div class="container">
+		<a href="/" class="logo-link">
+		</a>
+		<nav>
+			<ul>
+				<li><a routerLink="chat">Talk here</a></li>
+				<li><a routerLink="directions">Itineraire</a></li>
+				<li><a routerLink="preferences">Mes preferences</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+
+
+File: components/header/header.component.css
+--------------------------------------------------
+Content of components/header/header.component.css:
+
+
+File: components/directions/directions.component.css
+--------------------------------------------------
+Content of components/directions/directions.component.css:
+.loading {
+    font-size: 1.2em;
+    color: #999;
+  }
+
+File: components/directions/directions.component.ts
+--------------------------------------------------
+Content of components/directions/directions.component.ts:
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-directions',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  templateUrl: './directions.component.html',
+  styleUrls: ['./directions.component.css']
+})
+export class DirectionsComponent {
+  inputNumber: number | null = null;
+  result: number | null = null;
+  loading: boolean = false;
+
+  addTwo() {
+    if (this.inputNumber !== null) {
+      this.loading = true;
+      fetch(`http://localhost:8000/add_two/${this.inputNumber}`)
+        .then(response => response.json())
+        .then(data => {
+          this.result = data.result;
+          this.loading = false;
+        })
+        .catch(() => {
+          this.loading = false;
+          alert('Error fetching data');
+        });
+    }
+  }
+}
+
+File: components/directions/directions.component.html
+--------------------------------------------------
+Content of components/directions/directions.component.html:
+<div>
+    <input type="number" [(ngModel)]="inputNumber" placeholder="Enter a number">
+    <button (click)="addTwo()">Submit</button>
+    <div *ngIf="loading" class="loading">Thinking...</div>
+    <div *ngIf="result !== null">
+      <input type="text" [value]="result" readonly>
+    </div>
+  </div>
+
+File: components/directions/directions.component.spec.ts
+--------------------------------------------------
+Content of components/directions/directions.component.spec.ts:
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { DirectionsComponent } from './directions.component';
+
+describe('DirectionsComponent', () => {
+  let component: DirectionsComponent;
+  let fixture: ComponentFixture<DirectionsComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [DirectionsComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(DirectionsComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+
+
+File: components/chat/chat.component.ts
+--------------------------------------------------
+Content of components/chat/chat.component.ts:
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-chat',
+  imports: [],
+  templateUrl: './chat.component.html',
+  styleUrl: './chat.component.css'
+})
+export class ChatComponent {
+
+}
+
+
+File: components/chat/chat.component.css
+--------------------------------------------------
+Content of components/chat/chat.component.css:
+
+
+File: components/chat/chat.component.spec.ts
+--------------------------------------------------
+Content of components/chat/chat.component.spec.ts:
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { ChatComponent } from './chat.component';
+
+describe('ChatComponent', () => {
+  let component: ChatComponent;
+  let fixture: ComponentFixture<ChatComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [ChatComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(ChatComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+
+
+File: components/chat/chat.component.html
+--------------------------------------------------
+Content of components/chat/chat.component.html:
+<p>chat works!</p>
+
+
+File: components/landing/landing.component.ts
+--------------------------------------------------
+Content of components/landing/landing.component.ts:
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-landing',
+  imports: [],
+  templateUrl: './landing.component.html',
+  styleUrl: './landing.component.css'
+})
+export class LandingComponent {
+
+  rateBus(rate: number){
+    
+  }
+
+}
+
+
+File: components/landing/landing.component.html
+--------------------------------------------------
+Content of components/landing/landing.component.html:
+<div>
+    <h2>Create User Profile</h2>
+    <form>
+        <div>
+            <label for="travelType">Travel Type:</label>
+            <ul id="travelType" name="travelType">
+                <li value="bus">Bus</li>
+                <li value="metro">Metro</li>
+                <li value="other">Other</li>
+            </ul>
+        </div>
+        <div>
+            <label for="busPreference">Bus Preference:</label>
+            <input type="number" id="busPreference" name="busPreference" min="1" max="5">
+            <div>
+                <span class="star" (click)="rateBus(1)">★</span>
+                <span class="star" (click)="rateBus(2)">★</span>
+                <span class="star" (click)="rateBus(3)">★</span>
+                <span class="star" (click)="rateBus(4)">★</span>
+                <span class="star" (click)="rateBus(5)">★</span>
+            </div>
+        </div>
+        <div>
+            <label for="metroPreference">Metro Preference:</label>
+            <input type="number" id="metroPreference" name="metroPreference" min="1" max="5">
+        </div>
+        <button type="submit">Create Profile</button>
+    </form>
+</div>
+
+File: components/landing/landing.component.spec.ts
+--------------------------------------------------
+Content of components/landing/landing.component.spec.ts:
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { LandingComponent } from './landing.component';
+
+describe('LandingComponent', () => {
+  let component: LandingComponent;
+  let fixture: ComponentFixture<LandingComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [LandingComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(LandingComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+
+
+File: components/landing/landing.component.css
+--------------------------------------------------
+Content of components/landing/landing.component.css:
+
+
+File: components/preferences/preferences.component.css
+--------------------------------------------------
+Content of components/preferences/preferences.component.css:
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+.criteria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rate > input {
+    appearance: none;
+}
+
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+.rate:not(:checked) > label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
+
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+
+File: components/preferences/preferences.component.html
+--------------------------------------------------
+Content of components/preferences/preferences.component.html:
+<section>
+	<div class="criteria">
+		<span>type de voyage</span>
+		<ul>
+			<li>Tourisme</li>
+			<li>Travail</li>
+			<li>Sortie famille</li>
+			<li>Sortie solo</li>
+		</ul>
+	</div>
+
+	<div class="criteria">
+		<span>déplacement vélo</span>
+		<div class="rate">
+			<input type="radio" id="star5-bike" value="5"/>
+			<label for="star5-bike" title="text">5 stars</label>
+			<input type="radio" id="star4-bike" value="4"/>
+			<label for="star4-bike" title="text">4 stars</label>
+			<input type="radio" id="star3-bike" value="3"/>
+			<label for="star3-bike" title="text">3 stars</label>
+			<input type="radio" id="star2-bike" value="2"/>
+			<label for="star2-bike" title="text">2 stars</label>
+			<input type="radio" id="star1-bike" value="1"/>
+			<label for="star1-bike" title="text">1 star</label>
+		</div>
+	</div>
+
+	<div class="criteria">
+		<span>déplacement bus</span>
+		<div class="rate">
+			<label for="star5-bus" title="text">5 stars</label>
+			<input type="radio" id="star5-bus" value="5"/>
+			<label for="star4-bus" title="text">4 stars</label>
+			<input type="radio" id="star4-bus" value="4"/>
+			<label for="star3-bus" title="text">3 stars</label>
+			<input type="radio" id="star3-bus" value="3"/>
+			<label for="star2-bus" title="text">2 stars</label>
+			<input type="radio" id="star2-bus" value="2"/>
+			<label for="star1-bus" title="text">1 star</label>
+			<input type="radio" id="star1-bus" value="1"/>
+		</div>
+	</div>
+	<div class="criteria">
+		<span>déplacement métro</span>
+		<div class="rate">
+			<label for="star5-metro" title="text">5 stars</label>
+			<input type="radio" id="star5-metro" value="5"/>
+			<label for="star4-metro" title="text">4 stars</label>
+			<input type="radio" id="star4-metro" value="4"/>
+			<label for="star3-metro" title="text">3 stars</label>
+			<input type="radio" id="star3-metro" value="3"/>
+			<label for="star2-metro" title="text">2 stars</label>
+			<input type="radio" id="star2-metro" value="2"/>
+			<label for="star1-metro" title="text">1 star</label>
+			<input type="radio" id="star1-metro" value="1"/>
+		</div>
+	</div>
+	<div class="criteria">
+		<span>déplacement pied</span>
+		<div class="rate">
+			<label for="star5-walk" title="text">5 stars</label>
+			<input type="radio" id="star5-walk" value="5"/>
+			<label for="star4-walk" title="text">4 stars</label>
+			<input type="radio" id="star4-walk" value="4"/>
+			<label for="star3-walk" title="text">3 stars</label>
+			<input type="radio" id="star3-walk" value="3"/>
+			<label for="star2-walk" title="text">2 stars</label>
+			<input type="radio" id="star2-walk" value="2"/>
+			<label for="star1-walk" title="text">1 star</label>
+			<input type="radio" id="star1-walk" value="1"/>
+		</div>
+	</div>
+	<div class="criteria">
+		<span>optimisation du voyage</span>
+		<ul>
+			<li>Temps minimum</li>
+			<li>Voyage tranquille</li>
+		</ul>
+	</div>
+</section>
+
+File: components/preferences/preferences.component.spec.ts
+--------------------------------------------------
+Content of components/preferences/preferences.component.spec.ts:
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { PreferencesComponent } from './preferences.component';
+
+describe('PreferencesComponent', () => {
+  let component: PreferencesComponent;
+  let fixture: ComponentFixture<PreferencesComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [PreferencesComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(PreferencesComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+
+
+File: components/preferences/preferences.component.ts
+--------------------------------------------------
+Content of components/preferences/preferences.component.ts:
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-preferences',
+  imports: [],
+  templateUrl: './preferences.component.html',
+  styleUrl: './preferences.component.css'
+})
+export class PreferencesComponent {
+
+}
+
+

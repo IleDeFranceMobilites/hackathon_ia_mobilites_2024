@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Préparer mon itinéraire</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <link rel="stylesheet" href="style_agent.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="navbar">
+        <img src="assets/logo.svg.png" alt="Île-de-France Mobilités" class="logo">
+      <nav>
+        <a href="index.html">Me déplacer</a>
+        <a href="#">Tarifs</a>
+        <a href="#">Services</a>
+        <a href="gares.html">Gares</a>
+      </nav>
+      <button id="login-button" class="user-button">👤 Mon espace</button>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <section class="hero">
+      <h1>Préparer mon itinéraire</h1>
+      <p>Préparer à l’avance votre itinéraire porte à porte en Île-de-France</p>
+      <form class="itineraire-form">
+        <div class="form-row">
+          <label for="departure">Départ</label>
+          <input id="departure" type="text" placeholder="Gare, station, lieu, adresse">
+
+          <button class="switch-button" type="button" aria-label="Échanger départ et arrivée">↔️</button>
+
+          <label for="arrival">Arrivée</label>
+          <input id="arrival" type="text" placeholder="Gare, station, lieu, adresse">
+        </div>
+
+        <div class="form-row">
+          <label for="time-slot">Choisir une plage horaire</label>
+          <select id="time-slot">
+            <!-- Les plages horaires seront générées automatiquement par le script -->
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label>
+            <input type="checkbox"> Itinéraires accessibles
+          </label>
+          <button type="submit" class="search-button">Rechercher</button>
+        </div>
+      </form>
+    </section>
+
+    <div id="map"></div>
+    <script src="heatmap.js"></script>
+    <div class="button-container">
+      <input type="file" id="fileInput" accept=".csv">
+      <button onclick="loadCSV()">Charger CSV</button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <p>En partenariat avec Île-de-France Mobilités</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="script_utilisateur.js"></script>
+</body>
+</html>

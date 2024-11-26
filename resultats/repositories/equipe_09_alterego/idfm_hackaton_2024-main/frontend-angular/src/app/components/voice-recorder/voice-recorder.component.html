@@ -1,0 +1,17 @@
+<div>
+    @if (!isRecording && !blobUrl) {
+    <button (click)="startRecording()">Start Recording</button>
+    <span>{{recordedTime}}</span>
+    }
+
+    @if (isRecording && !blobUrl) {
+    <button (click)="stopRecording()">Stop Recording</button>
+    }
+
+    @if(blobUrl) {
+    <button (click)="clearRecording()">Clear recording</button>
+    <button (click)="downloadRecording()">Download recording</button>
+    <audio [src]="blobUrl" type="audio/webm"></audio>
+    }
+
+</div>

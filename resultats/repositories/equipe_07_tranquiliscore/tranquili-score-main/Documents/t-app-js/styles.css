@@ -1,0 +1,161 @@
+/* Global styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #25303c;
+    color: #fff;
+}
+
+header, footer {
+    background-color: #1a242f;
+    padding: 1rem 2rem;
+}
+
+.navbar {
+    display: flex; /* Flexbox pour aligner les éléments */
+    justify-content: flex-start; /* Aligne les liens et le logo au début */
+    align-items: center; /* Aligne verticalement */
+    padding: 1rem 2rem;
+    background-color: #1a242f; /* Couleur de fond de la navbar */
+}
+.navbar nav {
+    display: flex;
+    gap: 1rem; /* Espacement entre les liens */
+    margin-left: 2rem; /* Espace entre le menu et le logo */
+  }
+  
+
+.navbar nav a {
+    color: #fff;
+    margin-right: 1rem;
+    text-decoration: none;
+}
+
+#login-button {
+    padding: 0.5rem 1.5rem; /* Taille du bouton */
+    font-size: 1rem; /* Taille du texte */
+    background-color: #007bff; /* Couleur du bouton */
+    color: #fff; /* Couleur du texte */
+    border: none; /* Supprime les bordures */
+    border-radius: 8px; /* Coins arrondis */
+    cursor: pointer; /* Curseur en forme de main */
+    width: 150px; /* Largeur fixe du bouton */
+    text-align: center; /* Centre le texte */
+  }
+  
+  #login-button:hover {
+    background-color: #0056b3; /* Couleur au survol */
+  }
+  
+  #login-button:focus {
+    outline: 2px solid #0056b3; /* Bordure visible au focus */
+  }
+
+
+.user-button {
+    background-color: #fff;
+    color: #25303c;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+}
+
+
+
+.hero {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.itineraire-form {
+    max-width: 600px;
+    margin: 2rem auto;
+    background-color: #1a242f;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+
+label {
+    flex: 1;
+    font-size: 1rem;
+}
+
+input, select, button {
+    flex: 2;
+    padding: 0.7rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #25303c;
+}
+
+input:focus, select:focus, button:focus {
+    outline: 2px solid #007bff;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.switch-button {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.switch-button:hover {
+    background-color: #0056b3;
+}
+
+#time-slot {
+    width: 100%;
+    padding: 0.7rem;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.gares-section {
+    padding: 2rem;
+}
+
+.gare {
+    display: flex;
+    justify-content: space-between;
+    background-color: #1a242f;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.logo {
+    width: 10%; /* La largeur sera proportionnelle à la taille de l'écran */
+    max-width: 150px; /* Ne dépasse pas 150px */
+    height: auto; /* Maintient les proportions */
+}

@@ -1,0 +1,195 @@
+/* Styles globaux */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  h1, h2, h3 {
+    margin: 0;
+    padding: 1rem 0;
+  }
+  
+  .container {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  button {
+    padding: 0.75rem;
+    background-color: #67b5e8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: right;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Formulaire de recherche */
+  .search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 2rem auto;
+  }
+  
+  .search-form input,
+  .search-form select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .search-button {
+    padding: 0.75rem;
+  }
+  
+  /* Résultats de recherche */
+  .results {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
+  
+  .stop {
+    margin: 1rem auto;
+    padding: 1rem;
+    width: 90%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .stop:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .stop .safety-index {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stop .safety-info {
+    display: none;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    color: #555;
+  }
+  
+  .stop:hover .safety-info {
+    display: block;
+  }
+  
+  /* Code couleur pour l'indice de sécurité */
+  .safety-low {
+    color: red;
+  }
+  
+  .safety-medium {
+    color: orange;
+  }
+  
+  .safety-high {
+    color: green;
+  }
+  
+  /* Indice global */
+  .global-safety {
+    margin: 2rem 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  /* Rajouts Antoine */
+
+  .logo {
+    display: block;
+    align-items: left;
+  }
+
+  header {
+    background-color:#25303b;
+    display: flex;
+    flex-direction:row;
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between; /* Espacement entre les deux parties */
+    align-items: center; /* Centre les éléments verticalement */
+    padding: 0 1rem;
+    background-color: #25303b;
+    height: 60px; /* Ajustez selon vos besoins */
+  }
+  
+  .navbar-left {
+    display: flex; /* Pour aligner les liens horizontalement */
+    gap: 1rem; /* Espacement entre les liens */
+    background-color: #25303b;
+  }
+  
+  .navbar-right {
+    display: flex; /* Permet de centrer les éléments dans ce conteneur */
+    align-items: center;
+    background-color: #25303b;
+  }
+
+  .red-smiley {
+    border: 2px solid red;
+  }
+
+  .green-smiley{
+    border: 2px solid green;
+  }
+
+  .yellow-smiley{
+    border: 2px solid orange;
+  }
+
+  .green-smiley,.red-smiley,.yellow-smiley {
+    border-radius: 50px;
+    width: 20px; 
+    height: 20px; 
+    vertical-align: middle; 
+    margin-right: 5px;
+    align-items: center;
+    margin-left:40%;
+  }
+
+  .legend {
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+    background-color: rgb(255, 255, 255); 
+    padding: 10px; 
+    z-index: 1000;
+    color:#67b5e8;
+    border-radius: 10px;
+    width:100px
+  }
+
+  .date-select{
+    position: absolute; 
+    bottom: 10px; 
+    left: 10px; 
+    background-color: rgb(255, 255, 255); 
+    padding: 10px; 
+    z-index: 1000;
+    color:#67b5e8;
+    border-radius: 10px;
+  }
+  
+  #map {
+    width: 100%;
+    position: relative; 
+    height: 600px; 
+    background-color: #e0e0e0;
+}

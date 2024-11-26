@@ -1,0 +1,42 @@
+{
+  "name": "@repo/ai-toolkit",
+  "version": "0.0.0",
+  "dependencies": {
+    "@ai-sdk/azure": "^0.0.44",
+    "@elastic/elasticsearch": "^8.16.1",
+    "@langchain/anthropic": "^0.3.1",
+    "@langchain/community": "^0.3.15",
+    "@langchain/core": "^0.3.18",
+    "@langchain/langgraph": "^0.2.11",
+    "@langchain/ollama": "^0.1.0",
+    "@langchain/openai": "^0.3.14",
+    "@langchain/weaviate": "^0.1.0",
+    "ai": "^3.4.33",
+    "axios": "^1.7.7",
+    "langchain": "^0.3.2",
+    "ollama-ai-provider": "^0.15.2",
+    "openai": "^4.71.0",
+    "uuid": "^11.0.2",
+    "weaviate-client": "^3.2.1",
+    "weaviate-ts-client": "^2.2.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^22.8.7",
+    "@types/react": "^18.3.12"
+  },
+  "private": true,
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "exports": {
+    "./registry/*": "./src/registry/**/*.ts",
+    "./graphs": "./src/graphs/index.ts",
+    "./graphs/rag": "./src/graphs/rag/index.ts",
+    "./graphs/*": "./src/graphs/**/*.ts",
+    "./tools/*": "./src/tools/**/*.ts",
+    "./retriever/*": "./src/retriever/**/*.ts"
+  }
+}

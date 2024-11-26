@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chatbot - Extraction et Traduction d'Image</title>
+        <script src="https://cdn.jsdelivr.net/npm/recordrtc@5.6.2/RecordRTC.min.js"></script>
+        <style>
+            body { 
+                font-family: Arial, sans-serif; 
+                margin: 0; 
+                padding: 20px; 
+                background-color: #f9f9f9; 
+            }
+            .chat-container { 
+                width: 100%; 
+                max-width: 600px; 
+                margin: auto; 
+                background-color: white; 
+                border: 1px solid #ddd; 
+                padding: 20px; 
+                border-radius: 10px; 
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+            }
+            .chat-box { 
+                height: 300px; 
+                overflow-y: scroll; 
+                border-bottom: 1px solid #ddd; 
+                padding-bottom: 20px; 
+                margin-bottom: 20px; 
+            }
+            .message { 
+                margin: 10px 0; 
+                padding: 10px; 
+                border-radius: 8px; 
+                display: flex; 
+                align-items: center; 
+            }
+            .user-message { 
+                background-color: #e1f5fe; 
+                text-align: left; 
+            }
+            .bot-message { 
+                background-color: #f0f0f0; 
+                text-align: left; 
+            }
+            .message-text { 
+                flex-grow: 1; 
+                margin-right: 10px; 
+            }
+            .message-image { 
+                max-width: 100px; 
+                max-height: 100px; 
+                object-fit: cover; 
+                border-radius: 5px; 
+            }
+            .input-container { 
+                display: flex; 
+                margin-top: 20px; 
+            }
+            .input-container input[type="file"] { 
+                margin-right: 10px; 
+            }
+            .input-container button { 
+                padding: 10px 20px; 
+                background-color: #007bff; 
+                color: white; 
+                border: none; 
+                border-radius: 5px; 
+                cursor: pointer; 
+            }
+            .input-container button:hover { 
+                background-color: #0056b3; 
+            }
+        </style>
+    </head>
+    <body>
+        <div class="chat-container">
+            <h2>Mobil'IA - Voyager sur le réseau RATP n’a jamais été aussi accessible</h2>
+            <div class="chat-box">
+                <!-- Affichage des messages -->
+                {% for message in messages %}
+                    <div class="message {{ 'user-message' if message.role == 'user' else 'bot-message' }}">
+                        <div class="message-text">
+                            <p>{{ message.text }}</p>
+                        </div>
+                        {% if message.filename %}
+                            <img src="{{ url_for('static', filename='uploads/' + message.filename) }}" 
+                                 class="message-image" 
+                                 alt="Charger une image">
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="input-container">
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="image" required>
+                    <button type="submit">Charger une image</button>
+                </form>
+            </div>
+
+            <div class="input-container">
+                <button id="start-recording" onclick="startRecording()">Commencer l'enregistrement</button>
+                <button id="stop-recording" onclick="stopRecording()" disabled>Finir l'enregistrement</button>
+            </div>
+
+            <div class="input-container">
+                <form action="/ask" method="POST" id="text-question-form">
+                    <input type="text" name="question" placeholder="Posez une question..." required>
+                    <button type="submit">Poser une question</button>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            let audioRecorder = null;
+            const startRecordingBtn = document.getElementById('start-recording');
+            const stopRecordingBtn = document.getElementById('stop-recording');
+
+            function startRecording() {
+                navigator.mediaDevices.getUserMedia({ audio: true })
+                    .then(stream => {
+                        audioRecorder = RecordRTC(stream, { type: 'audio' });
+                        audioRecorder.startRecording();
+                        startRecordingBtn.disabled = true;
+                        stopRecordingBtn.disabled = false;
+                    });
+            }
+
+            function stopRecording() {
+                audioRecorder.stopRecording(() => {
+                    const audioBlob = audioRecorder.getBlob();
+                    const audioFile = new File([audioBlob], 'recording.webm', { type: 'audio/webm' });
+                    
+                    const formData = new FormData();
+                    formData.append('audio', audioFile);
+
+                    fetch('/transcribe', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.querySelector('input[name="question"]').value = data.transcription;
+                    });
+
+                    startRecordingBtn.disabled = false;
+                    stopRecordingBtn.disabled = true;
+                });
+            }
+        </script>
+    </body>
+</html>

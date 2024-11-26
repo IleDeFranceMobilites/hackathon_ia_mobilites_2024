@@ -1,0 +1,10 @@
+# All this does is tell the whole system to look at the Dockerfile in root to find the specs of the machine to create for this project
+services:
+  devcontainer:
+    build:
+      context: . # Where to look for the dockerfile
+      dockerfile: Dockerfile # The name of the Dockerfile
+    command: sleep infinity # What to do by default after creating the Dockerfile: nothing (ie. execute the command sleep to infinity)
+    # This last line allows for Docker-in-Docker
+    privileged: true
+

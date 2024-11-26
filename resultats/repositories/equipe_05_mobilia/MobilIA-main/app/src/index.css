@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    @apply antialiased;
+  }
+
+  body {
+    @apply text-base;
+  }
+
+  /* High contrast focus indicators */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-blue-600;
+  }
+
+  /* Dark mode styles */
+  .dark {
+    color-scheme: dark;
+  }
+  
+  .dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+}
+
+/* Smooth scrolling for chat container */
+.overflow-y-auto {
+  scroll-behavior: smooth;
+}
+
+/* Better tap targets for mobile */
+button, 
+input[type="submit"] {
+  @apply min-h-[44px] min-w-[44px];
+}

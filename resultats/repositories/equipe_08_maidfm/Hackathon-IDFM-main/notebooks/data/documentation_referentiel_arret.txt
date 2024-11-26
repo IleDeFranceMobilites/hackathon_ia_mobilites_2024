@@ -1,0 +1,895 @@
+1
+Documentation pour
+le Référentiel des Arrêts en Netex
+Version 1.2.3
+Date : 10/08/2020
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 2/24
+ Table des matières
+
+1. PRESENTATION 3
+2. STRUCTURE GENERALE 4
+2.1. REGLES DE GESTION 4
+2.1.1. IDENTIFICATION DES OBJETS 4
+2.1.2. VERSION ET DATES DES OBJETS ARRETS 4
+2.1.3. UTILISATION DES VERSIONS POUR LES REFERENCES INTERNES ET EXTERNES 5
+2.1.4. DATASOURCEREF : OBJETS DE REFERENCE / OBJETS PARTICULIERS 6
+2.2. ENUMERATIONS / PARTICULARITES DE CERTAINS ATTRIBUTS 6
+2.2.1. TYPES D’ARRET 6
+2.2.2. DONNEES D’ACCESSIBILITE 7
+2.2.3. LOCALISATIONS / GEOMETRIES 7
+3. FORMAT D’ECHANGE DES DONNEES 9
+3.1. STRUCTURE GLOBALE DU FICHIER XML 9
+3.1.1. DESCRIPTION 9
+3.1.2. EXEMPLE (XML) 10
+3.2. STRUCTURE PARTIE NETEX_COMMUN 12
+3.2.1. STRUCTURE DE LA PARTIE GENERALGROUPOFENTITIES – POLE D’ECHANGES 12
+3.2.2. PARTIE ORGANISATIONALUNIT – UNITES ORGANISATIONNELLES DU REFERENTIEL ARRETS 13
+3.3. PARTIE NETEX_ARRET_IDF 14
+3.3.1. PARTIE STOPPLACE DE TYPE MULTIMODALSTOPPLACE - ZONES DE CORRESPONDANCE 14
+3.3.2. PARTIE STOPPLACE DE TYPE MONOMODALSTOPPLACE - ZONES D’ARRET 15
+3.3.3. PARTIE QUAY DE TYPE FR1-ARRET_AUTO – ARRETS 17
+3.3.4. PARTIE QUAY AVEC DATASOURCEREF = ORGANISATIONALUNIT – ARRETS TRANSPORTEUR 19
+3.3.5. PARTIE STOPPLACEENTRANCE – ACCES 23
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 3/24
+1. PRESENTATION
+Ce document a pour objectif de spécifier la structure des données comprises dans le fichier
+arrets_netex.xml. Le fichier XML décrit les données du référentiel des arrêts d’Île-de-France Mobilités
+au format NETEX.
+La nature des objets est décrite dans la documentation sur les Données issues des référentiels de
+transport d’Île-de-France Mobilités
+La suite de cette documentation est un extrait des spécifications sur les webservices du référentiel des
+arrêts. L’ouverture des webservices se fera ultérieurement via le portail des API.
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 4/24
+2. STRUCTURE GENERALE
+2.1. REGLES DE GESTION
+2.1.1. Identification des objets
+L’identification des objets du Référentiel Arrêts est compatible avec les règles de codification
+européennes NETEX des arrêts, soit :
+[Code PAYS]::[Type d’objet]:[ID_REF_A]:[Code émetteur de l’identifiant]
+Puisque tous les identifiants dans ICAR sont distribués par IDFM, on utilise le code NUTS de la région
+Île-de-France pour le code émetteur de l’identifiant. On a donc :
+FR::[Type d’objet]:[ID_REF_A]:FR1
+[Type d’objet] peut prendre les valeurs suivantes :
+ Quay pour les Arrêts et pour les Arrêts Transporteur (la distinction se fait grâce à datasourceref)
+ monomodalStopPlace pour les Zones d’Arrêts
+ multimodalStopPlace pour les Zones de Correspondance
+ groupOfStopPlace pour les Pôles d’Echanges
+ StopPlaceEntrance pour les Accès
+Les références vers ces objets reprennent la même codification.
+Les autres types d’objets présents dans la réponse (OrganisationalUnit, Frames, etc.) respectent la
+codification générale NETEX, soit :
+[Source de la donnée]:[Type d’objet]:[ID]:[Local ou Référentiel]
+Avec :
+[Source de la donnée] : Pour les systèmes IDFM = FR1
+[ID] : identifiant de l’objet ou pour les éléments internes aux arrêts (exemple : PostalAdress) nécessitant
+des identifiants (contrainte NETEX) utilisation de l’identifiant de l’objet père
+[Local ou référentiel] : Si l’identifiant a été défini de façon local, valeur « LOC » (ex : pour les frames).
+Si l’identifiant provient d’un référentiel partagé, pas de valeur renseignée (ex : pour OrganisationalUnit
+ou pour les éléments internes aux arrêts).
+2.1.2. Version et dates des objets arrêts
+Les objets contenus dans la base ICAR sont versionnés.
+Les objets pouvant évoluer au fil du temps, un certain nombre d’informations sont disponibles pour
+connaitre les modifications apportées entre différents appels du WS. Ces notions se retrouvent dans le
+xml sous les attributs suivants :
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 5/24
+attribut XML Description Commentaires
+created Date de création de l’objet en base de données created="2015-09-
+08T09:30:47Z"
+changed Dernière date de modification des attributs de l’objet (peut être
+égale à la date de création de l’objet, si objet jamais modifié)
+changed="2015-09-
+08T09:30:47Z"
+version
+Dernier numéro de version associé à l’objet suivi de la version
+de la relation vers l’élément parent pour les objets suivants :
+- StopPlace de type monomodalStopPlace- Zones d’arrêt
+- Quay de type FR1-ARRET_AUTO – Arrêts
+- Quay avec datasourceref = OrganisationalUnit – Arrêts
+transporteur
+Pour les autres objets, c’est uniquement le dernier numéro de
+version associé à l’objet qui est indiqué.
+version="73670"
+version="73670-
+95286"
+Le versionnement des objets ICAR suit les principes suivants :
+- Chaque objet (référence ou particulier) dispose d’un numéro de version associé
+- Sont concernés par une incrémentation du numéro de version (nouvel id version supérieur) :
+o toutes les modifications attributaires des objets
+ Libellé
+ Géocodage
+ Adresse, etc.
+o toutes les actions opérées via les interfaces de ICAR (par l’Administrateur ou
+opérateurs de transport)
+ Fusion
+ Scission
+ Déplacement, etc.
+- La date de modification (changed) est modifiée si le numéro de version est modifié
+- L’exhaustivité des indications « date de création » (created), « date de modification » (changed)
+et numéro de version (version) n’est actuellement pas systématique. A minima, est indiqué le
+numéro de version de l’objet.
+2.1.3. Utilisation des versions pour les références internes et externes
+Par simplicité, pour les références, qu'elle soit internes (référence au sein de la même GeneralFrame),
+ou externes (référence à un objet dans une autre GeneralFrame, par exemple « éléments communs »),
+la version n’est pas précisée.
+Dans le web-services v2, tous les objets ont été isolés (pas d’objets imbriqués, contrairement aux
+web-services V1). Les références sont résumées dans le schéma suivant :
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 6/24
+2.1.4. Datasourceref : Objets de référence / Objets particuliers
+L’information datasourceref, présente dans les balises principales de tous les objets Arrêts ICAR,
+permet de savoir si l’objet est de type référence ou particulier (permet donc de distinguer les Arrêts des
+Arrêts Transporteur )
+Les objets de référence sont générés par le Référentiel, on a donc :
+datasourceref="FR1-ARRET_AUTO"
+Les objets particuliers (uniquement Arrêts Transporteurs) proviennent directement des transporteurs,
+datasourceref référence alors le fournisseur via l’objet (OrganisationalUnit). On a donc :
+datasourceref="FR1:OrganisationalUnit:X:"
+2.2. ENUMERATIONS / PARTICULARITES DE CERTAINS ATTRIBUTS
+2.2.1. Types d’arrêt
+Les arrêts sont typés différemment selon que ce sont des StopPlace (Zone de correspondance ou Zone
+d’Arrêts) : StopPlaceType, ou des Quay (Arrêts et Arrêts Transporteur) : TransportMode. Les zones
+multimodales (uniquement Zone de correspondance) sont typées en fonction du mode « le plus
+important ».
+Importance Libellé ICAR
+(IHM)
+Id_type_arret
+(BDD ICAR) Libellé NETEX
+(StopPlace)
+Libellé NETEX
+(Quay)
+1 Station ferrée / Val 1 railStation rail
+2 Station de métro 2 metroStation metro
+3 Station de tram 9 tramStation
+tram
+4 Arrêt de tram 6 onstreetTram
+5 Station de téléphérique 7 liftStation x
+Références
+ascendantes (1)
+Références
+descendantes (1-n)
+Arrêts Transporteur
+Pôle d’échanges
+Zone de correspondance
+Zone d’Arrêts
+Arrêts Accès
+StopPlaceRef
+ParentSiteRef
+ParentZoneRef StopPlace
+EntranceRef
+DerivedFromObjectRef
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 7/24
+6 Station de funiculaire 8 other* funicular
+7 Gare routière 3 busStation
+bus
+8 Arrêt de bus 5 onstreetBus
+9 Arrêt bateau bus 4 harbourPort x
+10 Autre 10 other x
+Légende :
+En gris clair : types non utilisés car information non collectée actuellement
+En gris foncé : types non utilisés car non présents actuellement en Île-de-France
+* Le type other est utilisé pour les StopPlace de type funiculaire car il n’existe pas d’équivalent dans NETEX pour
+ce mode à ce niveau.
+2.2.2. Données d’accessibilité
+Les données d’accessibilité sont toutes stockées dans l’ensemble « AccessibilyAssessment ».
+Les données d’accessibilité sont remontées uniquement jusqu’au niveau Quay (Arrêts et Arrêts
+Transporteurs).
+Les valeurs possibles pour chaque élément sont :
+- True : Accessible ou Dispositif présent
+- False : Non accessible ou Dispositif non présent
+- Partial : Peut indiquer que le service n’est pas disponible sur l’ensemble du périmètre de
+l’arrêt (ex : borne d’information voyageur uniquement pour une des lignes desservant l’arrêt)
+ou que le service est soumis à condition (ex : accessible si utilise les services d’assistance en
+gare)
+- Unknown : Information non connue
+La valeur MobilityImpairedAccess (notion d’accessibilité générale) est obligatoire dans la xsd NETEX,
+elle est toujours renseignée à « unknown » dans les WS.
+Les autres informations (accessibilité UFR, informations sonores, informations visuelles) ne sont
+alimentées actuellement que par les transporteurs OPTILE. Pour les arrêts RATP et SNCF les valeurs
+sont donc à « unknown ».
+2.2.3. Localisations / Géométries
+Dans le web-services, tous les objets sont uniquement décrits par leur centroïde.
+Les géométries complexes des objets Zones de Correspondance et Zone d’Arrêts ne sont pas reprises
+ici. Elles sont uniquement diffusées via les exports disponibles dans les écrans ICAR ou l’Opendata Ile-
+de-France Mobilités (format shape).
+Dans la réponse du web-service, les informations de localisation sont indiquées dans « gml :pos » au
+sein de l’élément « Centroid ». Les coordonnées y sont indiquées uniquement en système de projection
+Lambert 93 (EPSG:2154).
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 8/24
+Pour les Arrêts Transporteurs, si le système de coordonnées d’origine utilisé par le fournisseur était un
+autre système (Lambert 2 étendu), celles-ci sont également présentes comme sous la clef valeur de
+type LOCATION EPSG_27572.
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 9/24
+3. FORMAT D’ECHANGE DES DONNEES
+La réponse du web-service est un flux de données dont la structure est détaillée ci-dessous au format
+XML et correspond au schéma de publication NETEX.
+Le fichier au format JSON reprend la structure du fichier XML, mais sans l’élément racine et le prologue
+xml.
+3.1. STRUCTURE GLOBALE DU FICHIER XML
+3.1.1. Description
+La liste des objets NeTEx remontés par la requête est organisée et transmise dans un fichier XML (zippé
+dans le cas de la requête standard) selon la structure suivante :
+Niv. Tag XML Description
+1 Xml Version xml et encodage
+1 PublicationDelivery Encapsule l’ensemble du flux XML. Elément racine du fichier xml.
+2 PublicationTimestamp Date et heure de génération du XML.
+Format (heure universelle) : AAAA-MM-JJThh:mm:ssZ
+2 ParticipantRef Identifiant du Référentiel Arrêts : « FR1-ARRET »
+2 dataObjects Encapsule l’ensemble des données
+3
+CompositeFrame Cadre regroupant l’ensemble des cadres de version correspondant au WS.
+Son identifiant technique est composé ainsi :
+FR1:CompositeFrame:NETEX_IDF-AAAAMMJJhhmmssZ:LOC
+avec AAAAMMJJhhmmss : Date de génération de la réponse
+4 TypeOfFrameRef Indique le type de frame NETEX utilisé. Initialisé avec la valeur « NETEX_IDF »
+4 frames Encapsule l’ensemble des GeneralFrames
+5
+GeneralFrame
+NETEX_COMMUN
+Cadre de version encapsulant les objets de type : groupes de lieu, unités
+organisationnelles, services assistance et réservation de services d’assistance.
+Son identifiant technique est composé ainsi :
+FR1:CompositeFrame:NETEX_COMMUN-AAAAMMJJhhmmssZ:LOC
+avec AAAAMMJJhhmmss : Date de génération de la réponse
+6 TypeOfFrameRef Indique le type de frame NETEX utilisé. Initialisé avec la valeur « NETEX_COMMUN »
+6 members Encapsule les objets de la frame
+7
+GeneralGroupOfEntities Pôles d’échanges
+Balise facultative, non présente si absence de Pôle d’échanges dans la liste des
+données renvoyées. Il y a autant GeneralGroupOfEntities que de Pôles d'échange
+présents dans les objets remontés
+Cf Structure de la partie GeneralGroupOfEntitie
+7
+OrganisationalUnit Unités organisationnelles (sites ICAR)
+Il y a autant d’OrganisationalUnit que d’unités organisationnelles présentes dans les
+objets remontés
+Cf Structure de la partie OrganisationalUnit
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 10/24
+5
+GeneralFrame
+NETEX_ARRET_IDF
+Cadre de version encapsulant les objets de type : StopPlace, Quay, StopPlaceEntrance,
+Son identifiant technique est composé ainsi :
+FR1:CompositeFrame:NETEX_ARRET_IDF-AAAAMMJJhhmmssZ:LOC
+avec AAAAMMJJhhmmss : Date de génération de la réponse
+6 TypeOfFrameRef Indique le type de frame NETEX utilisé. Initialisé avec la valeur « NETEX_ARRET_IDF»
+6 members Encapsule les objets de la frame
+7
+StopPlace avec
+id=multimodalStopPlace
+Zone de correspondance
+Il y a autant de StopPlace que de Zones de correspondance remontées dans les
+données.
+Cf Structure de la partie Zone de correspondance: StopPlace de type
+multimodalStopPlace
+7
+StopPlace avec
+id=monomodalStopPlace
+Zone d’Arrêts
+Il y a autant de StopPlace que de Zones d'Arrêts remontées dans les données.
+Cf Structure de la partie Zone de Lieu de référence : StopPlace de type
+monomodalStopPlace
+7
+Quay, avec
+datasourceref = FR1-
+ARRET_AUTO
+Arrêt
+Il y a autant de Quay que d’Arrêts remontés dans les données
+Cf Structure de la partie Arrêt
+7
+Quay, avec
+datasourceref = référence
+vers OrganisationalUnit
+Arrêt Transporteur
+Il y a autant de Quay que d’Arrêts Transporteur remontés dans les données
+Cf Structure de la partie arrêt transporteur
+7
+StopPlaceEntrance Accès
+Il y a autant de StopPlaceEntrance que d’Accès remontés dans les données
+Cf Structure de la partie Accès
+3.1.2. Exemple (xml)
+< ?xml version= ‘’1.0’’ encoding= ‘’UTF-8‘’ ?>
+<PublicationDelivery version="1.04:FR1-NETEX-2.0-d’’
+xsi:schemaLocation="http://www.netex.org.uk/netex/xsd/NeTex_publication.xsd"
+xmlns:xlink=http://www.w3.org/1999/xlink xmlns:ifopt=http://www.ifopt.org.uk/ifopt xmlns:netex=http://www.netex.org.uk/netex
+xmlns:gml=http://www.opengis.net/gml/3.2 xmlns:core=http://www.govtalk.gov.uk/core xmlns:siri=http://www.siri.org.uk/siri
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<PublicationTimestamp>2015-02-26T16:10:29Z</PublicationTimestamp>
+<ParticipantRef>FR1-ARRET</ParticipantRef>
+<dataObjects>
+<CompositeFrame version="2.0" created="2015-11-23T17:29:46Z" id="FR1:CompositeFrame:NETEX_IDF-
+20180711162600Z:LOC ">
+<TypeOfFrameRef ref="FR1:TypeOfFrame:NETEX_IDF:">version="1.04:FR1-NETEX_IDF-
+2.0"</TypeOfFrameRef>
+<frames>
+<GeneralFrame version="2.0" id="FR1:CompositeFrame:NETEX_COMMUN-20180711162600Z:LOC">
+<TypeOfFrameRef ref="FR1:TypeOfFrame:NETEX_COMMUN:">version="1.04:FR1-NETEX_COMMUN-
+2.1"</TypeOfFrameRef>
+<members>
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 11/24
+<GeneralGroupOfEntities …> (…) </GeneralGroupOfEntities>
+<OrganisationalUnit….> (…) </OrganisationalUnit>
+</members>
+</GeneralFrame>
+<GeneralFrame version="2.0" id="FR1:GeneralFrame:NETEX_ARRET_IDF-20180711162600Z:LOC">
+<TypeOfFrameRef ref="FR1:TypeOfFrame:NETEX_ARRET_IDF:">version="1.04:FR1-
+NETEX_ARRET_IDF-2.1"</TypeOfFrameRef>
+<members>
+<StopPlace …id=”FR::multimodalStopPlace:…> (…) </StopPlace>
+<StopPlace …id=”FR::monomodalStopPlace:…> (…) </StopPlace>
+<Quay datasourceref=”FR1-ARRET_AUTO”…> (…) </Quay>
+<Quay datasourceref=”FR1:OrganisationalUnit…> (…) </Quay>
+<StopPlaceEntrance…> (…) </StopPlaceEntrance>
+</members>
+</GeneralFrame>
+</frames>
+</CompositeFrame>
+<dataObjects>
+</PublicationDelivery>
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 12/24
+3.2. STRUCTURE PARTIE NETEX_COMMUN
+3.2.1. Structure de la partie GeneralGroupOfEntities – Pôle d’échanges
+Définition:
+Lieu à visibilité nationale ou internationale (grandes gares, aéroport…).
+Balise facultative, non présente si absence de Pôle d’échanges dans la liste des données renvoyées.
+Il y a autant GeneralGroupOfEntities que de Pôles d'échanges présents dans les objets remontés.
+Ci-dessous le rappel des attributs et les spécificités liés à l’objet :
+attribut XML Description
+dataSourceRef Objet de référence, donc initialisé avec : "FR1-ARRET_AUTO"
+version Numéro de version de l’objet
+created Date de création de l’objet
+changed Date de dernière modification de l’objet
+id Identifiant Référentiel de l’objet. Format : "FR:groupOfStopPlace:[ID_REF_A]:FR1"
+Cf Identification des objets.
+Réponse
+Il est composé des balises suivantes :
+Niv. dans la
+sous structure Tag XML Description
+1 GeneralGroupOfEntities Contient la définition d’un Pôle d’échanges
+2 Name Nom du Pôle d’échanges
+2 Members Contient l’ensemble des Zones de correspondance du Pôle d’échanges
+3 StopPlaceRef Référence vers les Zones de correspondance associées au Pôle d’échanges.
+Exemple
+<GeneralGroupOfEntities dataSourceRef="FR1-ARRET_AUTO" version="657753" created="2015-04-21T10:04:57Z"
+changed="2015-04-21T10:04:57Z" id="FR::groupOfStopPlace:415732:FR1">
+<Name>Aéroport Roissy Charles de Gaulle</Name>
+<members>
+<StopPlaceRef ref="FR::multimodalStopPlace:69212:FR1"/>
+…
+</members>
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 13/24
+3.2.2. Partie OrganisationalUnit – Unités organisationnelles du Référentiel Arrêts
+Définition:
+Il y a autant d’OrganisationalUnit que d’unités organisationnelles présentes dans les objets remontés.
+Les attributs de la balise sont :
+attribut XML Description
+version Toujours égale à "any"
+id FR1:OrganisationalUnit:<code de l’unité organisationnelle du Référentiel>:
+Réponse
+Il est composé des balises suivantes
+Niv. dans la sous
+structure Tag XML Description
+7 OrganisationalUnit Présentation des unités organisationnelles concernés par l’export xml
+8 Name Nom de l’unité organisationnelle Référentiel Arrêts
+8 TypeOfOrganisationPartRef Ces unités organisationnelles sont spécifiques au Référentiel
+Arrêts. Elles sont donc de type : "FR1-ARRET_Organisation"
+Exemple
+<OrganisationalUnit version="any" id="FR1:OrganisationalUnit:52:">
+<Name>DARCHE-GROS</Name>
+<TypeOfOrganisationPartRef ref="FR1-ARRET_Organisation"/>
+</OrganisationalUnit>
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 14/24
+3.3. PARTIE NETEX_ARRET_IDF
+3.3.1. Partie StopPlace de type multimodalStopPlace - Zones de correspondance
+Définition:
+Lieu multimodal où les correspondances piétonnes entre les arrêts sont implicites (temps de
+déplacement piéton raisonnable).
+Il y a autant de StopPlace (multimodal) que de Zones de correspondances présentes dans les objets
+remontés.
+Ci-dessous le rappel des attributs et les spécificités liés à l’objet :
+attribut XML Description
+datasourceref Objet de référence, donc initialisé avec : "FR1-ARRET_AUTO"
+version Numéro de version de l’objet
+created Date de création de l’objet
+changed Date de dernière modification de l’objet
+id Identifiant Référentiel de l’objet. Format : "FR::multimodalStopPlace:[ID_REF_A]:FR1"
+Cf Identification des objets..
+Réponse
+Il est composé des balises suivantes
+Niv. dans la sous
+structure Tag XML Description
+1 StopPlace Contient la description d’une Zone de correspondance
+2 Name Nom de la Zone de correspondance
+2 Centroid Encapsule les informations de localisation du centroïde de l’objet
+3 Location Contient les informations de localisation
+4 gml:pos Coordonnées (Lambert 93 = EPSG:2154)
+Format : <gml:pos srsName="EPSG:2154">X Y</gml:pos>
+2 PostalAddress Encapsule les informations précisant l’adresse de la Zone de correspondance
+Identifiant et version obligatoires (contrainte NETEX)
+L’id reprend l’identifiant de la Zone de correspondance. Version ="any"
+3 Town Libellé de la commune (définie par rapport au centroïde)
+Cas particulier PARIS : libellé commune et numéro arrondissement
+3 PostalRegion Code INSEE de la commune (définie par rapport au centroïde)
+2 StopPlaceType Type de lieu d’arrêt. Cf §3.4.1 Types d’arrêt
+Exemple
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 15/24
+<StopPlace dataSourceRef="FR1-ARRET_AUTO" version="67991" created="2014-12-29T03:12:51Z" changed="2014-12-
+29T03:12:51Z" id="FR::multimodalStopPlace:67991:FR1">
+<Name>Place de la Mairie</Name>
+<Centroid>
+<Location>
+<gml:pos srsName="EPSG:2154">650122.362 6860500.971</gml:pos>
+</Location>
+</Centroid>
+<PostalAddress version="any" id="FR1:PostalAddress:67991:">
+<Town>Mouroux</Town>
+<PostalRegion>77320</PostalRegion>
+</PostalAddress>
+<StopPlaceType>onstreetBus</StopPlaceType>
+</StopPlace>
+3.3.2. Partie StopPlace de type monomodalStopPlace - Zones d’arrêt
+Définition:
+Lieu monomodal basé avant tout sur une cohérence commerciale (et géographique) : connu du public
+sous la même appellation commerciale.
+Il y a autant de StopPlace (monomodal) que de Zones d’Arrêts présentes dans les objets remontés.
+Ci-dessous le rappel des attributs et les spécificités liés à l’objet :
+attribut XML Description
+datasourceref Objet de référence, donc initialisé avec : "FR1-ARRET_AUTO"
+version Les numéros de version sont constitués par :
+- numéro de version de l’objet Zone d'Arrêts (ZDLR)
+- numéro de version du lien hiérarchique vers sa Zone de correspondance (LDA)
+created Date de création de l’objet
+changed Date de dernière modification de l’objet
+id Identifiant Référentiel de l’objet. Format : "FR ::monomodalStopPlace:[ID_REF_A]:FR1"
+Cf Identification des objets.
+Réponse
+Il est composé des balises suivantes
+Niv. dans la
+sous structure Tag XML Description
+1 StopPlace Contient la description d’une Zone d'Arrêts
+2 keyList Contient l’ensemble des Clés/Valeurs spécifiques aux données de télébillettique
+(échangées en interne IDFM)
+3 keyValue Attribut typeOfKey toujours égale à «ALTERNATE_IDENTIFIER»
+4 Key clé/valeur relatif à la notion de code télébillettique
+Nom de la clé/valeur toujours égale à «TLB_LIST_ID»
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 16/24
+4 Value Valeur de la liste des codes télébillettiques (codes alphanumériques séparés par
+des espaces)
+2 Name Nom de la Zone d'Arrêts
+2 Centroid Encapsule les informations de localisation du centroïde de l’objet
+3 Location Contient les informations de localisation
+4 gml:pos Coordonnées (Lambert 93 = EPSG:2154)
+Format : <gml:pos srsName="EPSG:2154">X Y</gml:pos>
+2 PostalAddress Encapsule les informations précisant l’adresse de la Zone d’Arrêts
+Identifiant et version obligatoires (contrainte NETEX)
+L’id reprend l’identifiant de la Zone d’Arrêts. Version ="any"
+3 Town Commune de la Zone d'Arrêts (définie par rapport au centroïde)
+Cas particulier PARIS : libellé commune et numéro arrondissement
+3 PostalRegion Code INSEE de la commune (définie par rapport au centroïde)
+2 ParentSiteRef Référence vers le Zone de correspondance mère
+2 Entrances Encapsule la liste des Accès de la Zone d’Arrêts
+3 StopPlaceEntranceRef Référence interne vers un Accès
+2 StopPlaceType Type de lieu d’arrêt. Cf §3.4.1 Types d’arrêt
+Exemple
+<StopPlace dataSourceRef="FR1-ARRET_AUTO" version="49420-112121" created="2014-12-29T03:12:51Z" changed="2014-
+12-29T03:12:51Z" id="FR::monomodalStopPlace:49420:FR1">
+<keyList>
+<keyValue typeOfKey=’’ALTENATE_IDENTIFIER’>
+<Key>TLB_LIST_ID</Key>
+<Value>RATP_30050180602 RATP_30050180603 SNCF_651101 SNCF_651102</Value>
+</keyValue typeOfKey>
+</keyList>
+<Name>Place de la Mairie</Name>
+<Centroid>
+<Location>
+<gml:pos srsName="EPSG:2154">650122.362 6860500.971</gml:pos>
+</Location>
+</Centroid>
+<PostalAddress version="any" id="FR1:PostalAddress:49420:">
+<Town>Mouroux</Town>
+<PostalRegion>77320</PostalRegion>
+</PostalAddress>
+<Landmark>sous-titre</Landmark>
+<ParentSiteRef ref="FR::multimodalStopPlace:67991:FR1"/>
+<entrances>
+<StopPlaceEntranceRef ref="FR::StopPlaceEntrance:1520:FR1"/>
+</entrances>
+<equipmentPlaces>
+<EquipmentPlaceRef ref="FR1:EquipmentPlace:23:"/>
+</equipmentPlaces>
+<StopPlaceType>railStation</StopPlaceType>
+</StopPlace>
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 17/24
+3.3.3. Partie Quay de type FR1-ARRET_AUTO – Arrêts
+Définition:
+Lieu tel qu’une plateforme, zone ou quai où les voyageurs peuvent accéder aux véhicules de transport.
+Objet « de référence » contrairement à l’Arrêt Transporteur. Il peut être multi-transporteur.
+Il y a autant de Quay (datasourceref=FR1-ARRET_AUTO) que d’Arrêts présents dans les objets
+remontés.
+Ci-dessous le rappel des attributs et les spécificités liés à l’objet :
+attribut XML Description
+datasourceref Objet de référence, donc initialisé avec : "FR1-ARRET_AUTO"
+version Les numéros de version sont constitués par :
+- numéro de version de l’Arrêt
+- numéro de version du lien hiérarchique vers sa Zone d'Arrêts parent
+created Date de création de l’objet
+changed Date de dernière modification de l’objet
+id Identifiant Référentiel de l’objet. Format : "FR::Quay:[ID_REF_A]:FR1"
+Cf Identification des objets.
+Réponse
+Il est composé des balises suivantes
+Niv. dans
+la sous-
+structure
+Tag XML Description
+1 Quay Contient la description d’un Arrêt
+2 Name Nom de l’Arrêt
+2 Centroid Encapsule les informations de localisation de l’objet
+3 Location Contient les informations de localisation
+4 gml:pos Coordonnées (Lambert 93 = EPSG:2154)
+Format : <gml:pos srsName="EPSG:2154">X Y</gml:pos>
+2 ParentZoneRef Référence vers la Zone d'Arrêts mère de l’Arrêt
+2 PostalAddress Encapsule les informations précisant l’adresse de l’Arrêt
+Identifiant et version obligatoires (contrainte NETEX)
+L’id reprend l’identifiant de l’Arrêt. Version ="any"
+3 AdressLine1 Adresse de l’Arrêt (non renseignée actuellement)
+3 Town Commune de l’Arrêt
+Cas particulier PARIS : libellé commune et numéro arrondissement
+3 PostalRegion Code insee de la commune
+2 AccessibilityAssessment Encapsule les informations précisant le niveau d'accessibilité de l’Arrêt
+Identifiant et version obligatoires (contrainte NETEX)
+L’id reprend l’identifiant de l’Arrêt. Version ="any"
+3 MobilityImpairedAccess Niveau d'accessibilité général de l’Arrêt (toujours unknown)
+3 limitations Encapsule les informations plus précises d’accessibilité
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 18/24
+4 AccessibilityLimitation /
+5 WheelchairAccess Description de l’accessibilité de l’Arrêt aux UFR (fauteuils roulants)
+Valeurs possibles :
+- Oui 100% (true)
+- Non (faux)
+- Partiel (partial) : Sources discordantes (Arrêts Transporteur avec des
+valeurs différentes) ou limitation de l’accès (ex : accessible si utilisation
+d’un service d’assistance)
+- Non renseigné (unknown)
+5 AudibleSignsAvailable Informations sonores à l’Arrêt
+Valeurs possibles :
+- Oui (true)
+- Partiel (partial) : Information uniquement disponibles pour certaines lignes
+desservant l’arrêt
+- Non (faux)
+- Non renseigné (unknown)
+5 VisualSignsAvailable Informations dynamiques à l’Arrêt
+Valeurs possibles :
+- Oui (true)
+- Partiel (partial) : Information uniquement disponibles pour certaines lignes
+desservant l’arrêt
+- Non (faux)
+-Non renseigné (unknown)
+2 TransportMode Type d’arrêt. Cf §3.4.1 Types d’arrêt
+2 tariffZones Liste des zones tarifaires de l’Arrêt
+En général une seule, mais il peut y en avoir plusieurs si différence entre la
+montée et la descente à l’Arrêt ou si des informations différentes sont fournies
+par les transporteurs (information récupée depuis les Arrêts Transporteurs
+enfants)
+3 TariffZoneRef Format <TariffZoneRef ref="FR1:TariffZone:[code du tarif]:LOC"/>
+Avec [code du tarif] : 1, 2, 3, 4, 5 ou Hors Zone
+2 PublicCode Numéro, code de la voie.
+En général indiqué uniquement pour les Arrêts ferrés ou dans des gares
+routières.
+2 ParentQuayRef Format : ref="FR::Quay:[ID Zone d’arrêts]–[Nom de la plateforme]:FR1”
+Nom de la plateforme dans laquelle se situe l’Arrêt Transporteur (utilisé dans le
+cas des gares pour indiquer le nom du quai en complément du nom de la voie,
+qui est lui stocké dans PublicCode)
+2 destinations Encapsule la liste des lignes qui desservent l’Arrêt
+Non fourni directement par le fournisseur Transporteur. Informations
+récupérées toutes les semaines via une synchronisation avec le système qui
+gère les données offre (back office vianavigo)
+3 DestinationDisplayView Informations synthétiques pour une ligne
+4 Name Nom de la ligne
+4 ShortName Nom abrégé de la ligne
+4 PrivateCode Code technique de la ligne. Correspond actuellement au code technique
+présent dans le Référentiel Lignes (code indiqué par les transporteurs dans
+leurs échanges de données, proche du code contractuel).
+Exemple
+<Quay dataSourceRef="FR1-ARRET_AUTO" version="67525-2154" created="2014-12-29T03:12:51Z" changed="2014-12-
+29T03:12:51Z" id="FR::Quay:6525:FR1">
+<Name>Place de la Mairie</Name>
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 19/24
+<Centroid>
+<Location>
+<gml:pos srsName="EPSG:2154">702742.33 6857946.519</gml:pos>
+</Location>
+</Centroid>
+<ParentZoneRef ref="FR::monomodalStopPlace:49420:FR1" />
+<PostalAddress version="any" id="FR1:PostalAddress:6525:">
+<AdressLine1>2 rue de Paris</AdressLine1>
+<Town>Mouroux</Town>
+<PostalRegion>77320</PostalRegion>
+</PostalAddress>
+<AccessibilityAssessment version="any" id="FR1:AccessibilityAssessment:6525:">
+<MobilityImpairedAccess>unknown</MobilityImpairedAccess>
+<limitations>
+<AccessibilityLimitation>
+<WheelchairAccess>true</WheelchairAccess>
+<AudibleSignalsAvailable>partial</AudibleSignalsAvailable>
+<VisualSignsAvailable>true</VisualSignsAvailable>
+</AccessibilityLimitation>
+</limitations>
+</AccessibilityAssessment>
+<TransportMode>bus</TransportMode>
+<tariffZones>
+<TariffZoneRef ref="FR1:TariffZone:3:LOC"/>
+<TariffZoneRef ref="FR1:TariffZone:4:LOC"/>
+</tariffZones>
+<PublicCode>3</PublicCode>
+<ParentQuayRef ref=”FR::Quay:6525-2:FR1”/>
+<destinations>
+<DestinationDisplayView>
+<Name>RATP 12</Name>
+<ShortName>12</ShortName>
+<FrontText>Mairie Fontainebleau</FrontText>
+<PrivateCode>100100012</PrivateCode>
+</DestinationDisplayView>
+<DestinationDisplayView>
+<Name>RATP 26</Name>
+<ShortName>26</ShortName>
+<FrontText>Gare de Mouroux</FrontText>
+<PrivateCode>100100026</PrivateCode>
+</DestinationDisplayView>
+</destinations>
+</Quay>
+3.3.4. Partie Quay avec datasourceref = OrganisationalUnit – Arrêts transporteur
+Définition:
+Lieu tel qu’une plateforme, zone ou quai où les voyageurs peuvent accéder aux véhicules de transport.
+Objet « particulier» contrairement à l’Arrêt. Il correspond précisément à ce qui a été fourni par le
+transporteur au Référentiel.
+Ci-dessous le rappel des attributs et les spécificités liés à l’objet :
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 20/24
+attribut XML Description
+datasourceref Référence vers OrganisationalUnit du transporteur fournisseur de l’objet
+Exemple : "FR1:OrganisationalUnit:52:"
+version Les numéros de version sont constitués par :
+- numéro de version de l’Arrêt Transporteur
+- numéro de version du lien vers son Arrêt parent
+created Date de création de l’objet
+changed Date de dernière modification de l’objet
+DerivedFromObjectRef Référence à l’Arrêt (de référence, ZDER) parent de l’Arrêt Transporteur
+id Identifiant Référentiel de l’objet. Format : "FR::Quay:[ID_REF_A]:FR1"
+Cf Identification des objets.
+Réponse
+Il est composé des balises suivantes
+Niv. dans la
+sous
+structure
+Tag XML Description
+1 Quay Description l’arrêt transporteur
+2 keyList Contient l’ensemble des Clés/Valeurs spécifiques aux échanges avec
+IDFM
+3 keyValue Première occurrence : Présent si renseigné par le fournisseur (non
+obligatoire)
+Attribut typeOfKey toujours égale à «ALTERNATE_IDENTIFIER»
+4 Key clé/valeur relatif à la notion d’ACS
+Nom de la clé/valeur toujours égale à «ACS_ID»
+4 Value Valeur de l’identifiant ACS (billettique)
+3 keyValue Deuxième occurrence : Présent si renseigné par le fournisseur (non
+obligatoire)
+Attribut typeOfKey toujours égale à «ALTERNATE_NAME»
+4 Key clé/valeur relatif à la notion de nom ACS (billettique)
+Toujours égale à «ACS_NAME»
+4 Value Nom de l’Arrêt Transporteur pour la billettique
+3 keyValue Troisième occurrence : Présent si le fournisseur a transmis ses Arrêts
+Transporteur en Lambert 2 étendu
+Attribut typeOfKey toujours égale à «LOCATION»
+4 Key clé/valeur relatif à la localisation de l’Arrêt Transporteur dans le système
+de projection Lambert 2 étendu (autre système de projection accepté en
+entrée du Référentiel Arrêts)
+Toujours égale à «LOCATION EPSG_27572»
+4 Value Valeur du géocodage de l’Arrêt Transporteur en Lambert 2 étendu
+2 Name Nom de l’Arrêt Transporteur
+2 Description Description de l’Arrêt Transporteur (n’a pas vocation à être diffusé en
+Information voyageur)
+2 PrivateCode Code interne au fournisseur. Identification spécifique à la source de
+données
+2 Centroid Encapsule les informations de localisation de l’objet
+3 Location Contient les informations de localisation
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 21/24
+4 gml:pos Coordonnées (Lambert 93 = EPSG:2154)
+Format : <gml:pos srsName="EPSG:2154">X Y</gml:pos>
+2 PostalAddress Encapsule les informations précisant l’adresse de l’Arrêt Transporteur
+Identifiant et version obligatoires (contrainte NETEX)
+L’id reprend l’identifiant de l’Arrêt Transporteur. Version ="any"
+3 AdressLine1 Adresse de l’Arrêt Transporteur
+3 Town Commune de l’Arrêt Transporteur
+Cas particulier PARIS : libellé commune et numéro arrondissement
+3 PostalRegion Code insee de la commune
+2 AccessibilityAssessment Encapsule les informations précisant le niveau d'accessibilité de l’Arrêt
+Transporteur. Identifiant et version obligatoires (contrainte NETEX)
+L’id reprend l’identifiant de l’Arrêt. Version ="any"
+3 MobilityImpairedAccess Niveau d'accessibilité général de l’Arrêt Transporteur (toujours unknown)
+3 Limitations Encapsule les informations plus précises d’accessibilité
+4 AccessibilityLimitation /
+5 WheelchairAccess Description de l’accessibilité de l’Arrêt Transporteur aux UFR (fauteuils
+roulants)
+Valeurs possibles :
+- Oui 100% (true)
+- Non (faux)
+- Partiel (partial) : Limitation de l’accès (ex : accessible si utilisation d’un
+service d’assistance)
+- Non renseigné (unknown)
+5 AudibleSignsAvailable Informations sonores disponibles à l’Arrêt Transporteur
+Valeurs possibles :
+- Oui (true)
+- Partiel (partial) : Information uniquement disponibles pour certaines
+lignes desservant l’arrêt
+- Non (faux)
+- Non renseigné (unknown)
+5 VisualSignsAvailable Informations dynamiques disponibles à l’Arrêt Transporteur
+Valeurs possibles :
+- Oui (true)
+- Partiel (partial) : Information uniquement disponibles pour certaines
+lignes desservant l’arrêt
+- Non (faux)
+- Non renseigné (unknown)
+2 TransportMode Type d’arrêt. Cf §3.4.1 Types d’arrêt
+2 tariffZones Liste des zones tarifaires de l’Arrêt Transporteur (une seule)
+3 TariffZoneRef Format <TariffZoneRef ref="FR1:TariffZone:[code du tarif]:LOC"/>
+Avec [code du tarif] : 1, 2, 3, 4, 5 ou Hors Zone
+2 PublicCode Numéro, code de la voie.
+En général indiqué uniquement pour les Arrêts Transporteurs ferrés ou
+dans des gares routières.
+2 ParentQuayRef Nom de la plateforme dans laquelle se situe l’Arrêt Transporteur (utilisé
+dans le cas des gares pour indiquer le nom du quai en complément du
+nom de la voie, qui est lui stocké dans PublicCode)
+Exemple : <ParentQuayRef ref=”2”>
+2 destinations Encapsule la liste des lignes qui desservent l’Arrêt Transporteur
+Non fourni directement par le fournisseur Transporteur. Informations
+récupérées toutes les semaines via une synchronisation avec le système
+qui gère les données offre (back office vianavigo)
+3 DestinationDisplayView Informations synthétiques pour une ligne
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 22/24
+4 Name Nom de la ligne
+4 ShortName Nom abrégé de la ligne
+4 PrivateCode Code technique de la ligne. Correspond actuellement au code technique
+présent dans le Référentiel Lignes (code indiqué par les transporteurs
+dans leurs échanges de données, proche du code contractuel). A terme, il
+sera remplacé par l’id du Référentiel Lignes (C00000)
+Exemple
+<Quay dataSourceRef="FR1:OrganisationalUnit:52:" version="718710-6545" created="2015-03-03T10:03:39Z" changed="2015-07-
+21T09:07:31Z" derivedFromObjectRef="FR::Quay:456646:FR1" id="FR::Quay:50073966:FR1">
+<keyList>
+<KeyValue typeOfKey="ALTERNATE_IDENTIFIER">
+<Key>ACS_ID</Key>
+<Value>23</Value>
+</KeyValue>
+<KeyValue typeOfKey="ALTERNATE_NAME">
+<Key>ACS_NAME</Key>
+<Value>Chateau</Value>
+</KeyValue>
+<KeyValue typeOfKey="LOCATION">
+<Key>EPSG_27572</Key>
+<Value>651489 2425028</Value>
+</KeyValue>
+</keyList>
+<Name>Place de la Mairie</Name>
+<Description>Aller</Description>
+<PrivateCode>200</PrivateCode>
+<Centroid>
+<Location>
+<gml:pos srsName="EPSG:2154">702742.33 6857946.519</gml:pos>
+</Location>
+</Centroid>
+<PostalAddress version="any" id="FR1:PostalAddress:50073966:">
+<AddressLine1>2 rue de Paris</AddressLine1>
+<Town>Mouroux</Town>
+<PostalRegion>77320</PostalRegion>
+</PostalAddress>
+<AccessibilityAssessment version="any" id="FR1:AccessibilityAssessment:50073966:">
+<MobilityImpairedAccess>unknown</MobilityImpairedAccess>
+<limitations>
+<AccessibilityLimitation>
+<WheelchairAccess>true</WheelchairAccess>
+<AudibleSignalsAvailable>true</AudibleSignalsAvailable>
+<VisualSignsAvailable>true</VisualSignsAvailable>
+</AccessibilityLimitation>
+</limitations>
+</AccessibilityAssessment>
+<TransportMode>bus</TransportMode>
+<tariffZones>
+<TariffZoneRef ref="FR1:TariffZone:3:LOC"/>
+</tariffZones>
+<PublicCode>3</PublicCode>
+<ParentQuayRef ref=”2”/>
+<destinations>
+<DestinationDisplayView>
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 23/24
+<Name>RATP 12</Name>
+<ShortName>12</ShortName>
+<PrivateCode>100100012</PrivateCode>
+</DestinationDisplayView>
+</destinations>
+</Quay>
+3.3.5. Partie StopPlaceEntrance – Accès
+Définition:
+Points d’entrée et/ou de sortie d’une Zone d’Arrêts (souvent gare ou station de métro).
+Ci-dessous le rappel des attributs et les spécificités liés à l’objet :
+attribut XML Description
+datasourceref Référence vers OrganisationalUnit du transporteur fournisseur de l’objet
+Exemple : "FR1:OrganisationalUnit:52:"
+ou "FR1-ARRET_AUTO" si l’accès n’est pas créé par ICAR
+version Numéro de version de l’objet
+created Date de création de l’objet
+changed Date de dernière modification de l’objet
+id Identifiant Référentiel de l’objet. Format : « FR ::StopPlaceEntrance :[ID_REF_A] :FR1 »
+Cf Identification des objets.
+Réponse
+Il est composé des balises suivantes
+Niv. Dans la
+sous structure Tag XML Description
+1 StopPlaceEntrance Contient la description de l’Accès
+2 keyList Contient l’ensemble des Clés/Valeurs
+3 keyValue Présent si le fournisseur a transmis ses accès en Lambert 2 étendu
+Attribut typeOfKey toujours égale à «LOCATION»
+4 Key clé/valeur relatif à la localisation de l’accès dans le système de projection
+Lambert 2 étendu (autre système de projection accepté en entrée du
+Référentiel Arrêts)
+Toujours égale à «LOCATION EPSG_27572»
+4 Value Valeur du géocodage de l’accès en Lambert 2 étendu
+2 Name Nom de l’accès
+2 ShortName Numéro de l’accès
+2 PrivateCode Code interne au fournisseur. Identification spécifique à la source de
+données.
+2 Centroid Encapsule les informations de localisation de l’objet
+3 Location Contient les informations de localisation
+4 gml:pos Coordonnées (Lambert 93 = EPSG:2154)
+Format : <gml:pos srsName="EPSG:2154">X Y</gml:pos>
+Documentation pour le Référentiel des Arrêts en Netex
+Version : 1.0.9 Page : 24/24
+2 IsEntry Indique si l’accès est une entrée
+La balise n’est pas présente si la valeur est non renseignée
+Valeurs possibles :
+- true
+- False
+2 IsExit Indique si l’accès est une sortie
+La balise n’est pas présente si la valeur est non renseignée
+Valeurs possibles :
+- true
+- false
+Exemple
+<StopPlaceEntrance dataSourceRef="FR1:organisationunit:59:" version="257264" id=" FR::StopPlaceEntrance:1520:FR1">
+<keyList>
+<KeyValue typeOfKey="LOCATION">
+<Key>EPSG_27572</Key>
+<Value>651489 2425028</Value>
+</KeyValue>
+</keyList>
+<Name>rue Bidulle</Name>
+<ShortName>1s</ShortName>
+<PrivateCode>3</PrivateCode>
+<Centroid>
+<Location>
+<gml:pos srsName="EPSG:2154">702742.33 6857946.519</gml:pos>
+</Location>
+</Centroid>
+<IsEntry>true</IsEntry>
+<IsExit>true</IsExit>
+</StopPlaceEntrance>

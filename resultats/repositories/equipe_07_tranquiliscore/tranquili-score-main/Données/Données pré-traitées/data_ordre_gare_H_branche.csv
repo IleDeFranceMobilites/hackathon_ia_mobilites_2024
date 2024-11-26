@@ -1,0 +1,29 @@
+,Id_gare_IDFM,Lib_gare_TN,Ligne,Sens,Branche,Ordre,CodeGare
+0,7001,Gare du Nord,H,Vers Province,Gare du Nord - Pontoise,1,PNB
+1,7003,Saint-Denis,H,Vers Province,Gare du Nord - Pontoise,2,SDE
+2,7004,Epinay-Villetaneuse,H,Vers Province,Gare du Nord - Pontoise,3,EPV
+3,7019,La Barre-Ormesson,H,Vers Province,Gare du Nord - Pontoise,4,LBJ
+4,7020,Enghien-les-Bains,H,Vers Province,Gare du Nord - Pontoise,5,EN
+5,7021,Champ De Courses D'enghien,H,Vers Province,Gare du Nord - Pontoise,6,CEG
+6,7022,Ermont-Eaubonne,H,Vers Province,Gare du Nord - Pontoise,7,ERT
+7,7036,Cernay,H,Vers Province,Gare du Nord - Pontoise,8,CEJ
+12,7041,Saint-Ouen-L'aumone,H,Vers Province,Gare du Nord - Pontoise,13,SOA
+13,7042,Pontoise,H,Vers Province,Gare du Nord - Pontoise,14,PSE
+15,7046,Franconville-Plessis-Bouchard,H,Vers Province,Gare du Nord - Pontoise,9,FPB
+16,7047,Montigny-Beauchamp,H,Vers Province,Gare du Nord - Pontoise,10,MBP
+17,7048,Pierrelaye,H,Vers Province,Gare du Nord - Pontoise,11,PRY
+18,7049,Saint-Ouen-L'aumone-Liesse,H,Vers Province,Gare du Nord - Pontoise,12,SOL
+712,7001,Gare du Nord,H,Vers Paris,Gare du Nord - Pontoise,14,PNB
+713,7003,Saint-Denis,H,Vers Paris,Gare du Nord - Pontoise,13,SDE
+714,7004,Epinay-Villetaneuse,H,Vers Paris,Gare du Nord - Pontoise,12,EPV
+715,7019,La Barre-Ormesson,H,Vers Paris,Gare du Nord - Pontoise,11,LBJ
+716,7020,Enghien-les-Bains,H,Vers Paris,Gare du Nord - Pontoise,10,EN
+717,7021,Champ De Courses D'enghien,H,Vers Paris,Gare du Nord - Pontoise,9,CEG
+718,7022,Ermont-Eaubonne,H,Vers Paris,Gare du Nord - Pontoise,8,ERT
+719,7036,Cernay,H,Vers Paris,Gare du Nord - Pontoise,7,CEJ
+724,7041,Saint-Ouen-L'aumone,H,Vers Paris,Gare du Nord - Pontoise,2,SOA
+725,7042,Pontoise,H,Vers Paris,Gare du Nord - Pontoise,1,PSE
+727,7046,Franconville-Plessis-Bouchard,H,Vers Paris,Gare du Nord - Pontoise,6,FPB
+728,7047,Montigny-Beauchamp,H,Vers Paris,Gare du Nord - Pontoise,5,MBP
+729,7048,Pierrelaye,H,Vers Paris,Gare du Nord - Pontoise,4,PRY
+730,7049,Saint-Ouen-L'aumone-Liesse,H,Vers Paris,Gare du Nord - Pontoise,3,SOL

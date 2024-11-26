@@ -1,0 +1,23 @@
+<div>
+  <h2>Example FastAPI API: Add 2 to any number</h2>
+  <input type="number" [(ngModel)]="inputNumber" placeholder="Enter a number">
+  <button (click)="addTwo()">Submit</button>
+  <div *ngIf="loading" class="loading">Thinking...</div>
+  <div *ngIf="result !== null">
+    <input type="text" [value]="result" readonly>
+  </div>
+
+  <h2>Fetch the Summarize API</h2>
+  <section class="user-data-summary" [innerHTML]="userDataSummary"></section>
+
+  <h2>Fetch the Conversations API</h2>
+  <section class="conversation-summary" [innerHTML]="conversationSummary"></section>
+
+  <h2>Fetch the Options and Metadata API</h2>
+  <pre class="scrollable-box">{{ optionsAndMetadata }}</pre>
+
+  <h2>Fetch Intentions and Entities API</h2>
+  <input type="text" [(ngModel)]="message" placeholder="Enter your message">
+  <button (click)="fetchIntentionsEntities()">Submit</button>
+  <pre class="scrollable-box">{{ intentionsEntities }}</pre>
+</div>

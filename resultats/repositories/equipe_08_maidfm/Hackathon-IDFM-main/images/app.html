@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Démo App Mobile Scrollable</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+
+        #phone-frame {
+            width: 400px;
+            height: 800px;
+            border: 16px solid black;
+            border-radius: 36px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        #screen {
+            width: 100%;
+            height: 100%;
+            overflow-y: scroll;
+            border-radius: 24px;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Home button */
+        #home-button {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: #333;
+            border-radius: 50%;
+        }
+
+        /* Mon profil button */
+        #profile-button, #home-button-link {
+            position: absolute;
+            bottom: 100px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #home-button-link {
+            left: 20px;
+        }
+
+        /* Mon profil */
+        #profile-button {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="phone-frame">
+        <div id="screen" id="main-content">
+            <img id="home-image" src="app.png" alt="Démo d'Application Mobile">
+        </div>
+        <button id="home-button-link" onclick="showHome()">Accueil</button>
+        <button id="profile-button" onclick="showProfile()">Mon profil</button>
+        <div id="home-button"></div>
+    </div>
+
+    <script>
+        function showProfile() {
+            const screen = document.getElementById('screen');
+            screen.innerHTML = `<img src="score_sg.png" alt="Mon Profil">`;
+        }
+
+        function showHome() {
+            const screen = document.getElementById('screen');
+            screen.innerHTML = `<img src="app.png" alt="Démo d'Application Mobile">`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --background-hsl: hsl(0 0% 100%);
+    --foreground: 210 23% 19%;
+    --foreground-hsl: hsl(210 23% 19%);
+    --card: 0 0% 100%;
+    --card-hsl: hsl(0 0% 100%);
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground-hsl: hsl(222.2 84% 4.9%);
+    --primary: 211 79% 46%;
+    --primary-hsl: hsl(211 79% 46%);
+    --primary-foreground: 210 40% 98%;
+    --primary-foreground-hsl: hsl(210 40% 98%);
+    --secondary: 210 23% 19%;
+    --secondary-hsl: hsl(210 23% 19%);
+    --tertiary: 34 98% 67%;
+    --tertiary-hsl: hsl(34 98% 67%);
+    --tertiary-foreground: 210 40% 98%;
+    --tertiary-foreground-hsl: hsl(210 40% 98%);
+    --muted-foreground: 220.4 16.3% 44.9%;
+    --muted-foreground-hsl: hsl(220.4 16.3% 44.9%);
+    --accent: 212 100% 94%;
+    --accent-hsl: hsl(212, 100%, 94%);
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent-foreground-hsl: hsl(222.2 47.4% 11.2%);
+    --destructive: 349 100% 35%;
+    --destructive-hsl: hsl(349, 100%, 35%);
+    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground-hsl: hsl(210 40% 98%);
+    --border: 214.3 31.8% 91.4%;
+    --border-hsl: hsl(214.3 31.8% 91.4%);
+    --input: 214.3 31.8% 91.4%;
+    --input-hsl: hsl(214.3 31.8% 91.4%);
+    --ring: 211 79% 46%;
+    --ring-hsl: hsl(211 79% 46%);
+    --chart-1: 12 76% 61%;
+    --chart-1-hsl: hsl(12 76% 61%);
+    --chart-2: 173 58% 39%;
+    --chart-2-hsl: hsl(173 58% 39%);
+    --chart-3: 197 37% 24%;
+    --chart-3-hsl: hsl(197 37% 24%);
+    --chart-4: 43 74% 66%;
+    --chart-4-hsl: hsl(43 74% 66%);
+    --chart-5: 27 87% 67%;
+    --chart-5-hsl: hsl(27 87% 67%);
+    --radius: 0.5rem;
+
+    --success: 130 45% 41%;
+    --success-hsl: hsl(130 45% 41%);
+    --success-foreground: #fff;
+
+    --hover-background: rgba(0, 0, 0, 0.1);
+    --foreground-dark: hsl(0, 0%, 100%);
+
+    --idfm-antharthite: #25303b;
+    --idfm-antharthite-hsl: hsl(210, 23%, 19%);
+    --idfm-antharthite-hsla: hsla(210, 23%, 19%, 1);
+
+    --idfm-bleu: #64b5e5;
+    --idfm-bleu-hsl: hsl(202, 71%, 65%);
+    --idfm-bleu-hsla: hsla(202, 71%, 65%, 1);
+    --idfm-bleu-2: #64b5f7;
+
+    --idfm-bleu-fonce: #1872d2;
+    --idfm-bleu-fonce-hsl: hsl(211, 79%, 46%);
+    --idfm-bleu-fonce-hsla: hsl(211, 79%, 46%, 1);
+
+    --idfm-accent: #fdb557;
+    --idfm-accent-hsl: hsl(34, 98%, 67%);
+    --idfm-accent-hsla: hsla(34, 98%, 67%, 1);
+    --warning: #fdb557;
+    --warning-foreground: #fff;
+
+    --idfm-neutral: #53616e;
+    --idfm-neutral-hsl: hsl(209, 14%, 38%);
+    --idfm-neutral-hsla: hsla(209, 14%, 38%, 1);
+    --neutral: #53616e;
+
+    --idfm-error: #b00020;
+    --idfm-error-hsl: hsl(349, 100%, 35%);
+    --idfm-error-hsla: hsla(349, 100%, 35%, 1);
+    --error: #b00020;
+
+    --idfm-backgound-gray-light: #dddddd;
+
+    --idfm-background-blue-bright: #dfeeff;
+    --idfm-background-blue-bright-hsl: hsl(212, 100%, 94%);
+
+    --idfm-hover-transparent: hsla(0, 0%, 100%, 0.15);
+    --hover-transparent: hsla(0, 0%, 100%, 0.15);
+
+    --idfm-complementary: #e59464;
+    --idfm-complementary-fonce: #d27818;
+
+    --idfm-tertiary: #6475e5;
+    --idfm-tertiary-fonce: #1b18d2;
+
+    --idfm-fourth: #64e5d4;
+    --idfm-fourth-fonce: #18cfd2;
+
+    --idfm-triadic-1: #e564b5;
+    --idfm-triadic-1-alt: #d21872;
+
+    --idfm-triadic-2: #b5e564;
+    --idfm-triadic-2-alt: #72d218;
+
+    --idfm-tetradic-1: #d464e5;
+    --idfm-tetradic-1-alt: #d218cf;
+
+    --idfm-tetradic-2: #75e564;
+    --idfm-tetradic-2-alt: #18d21b;
+
+    --idfm-other: #303a46;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  // font families
+  @font-face {
+    font-family: "Raleway-light";
+    font-style: normal;
+    font-weight: 300;
+    font-display: block;
+    src: url("./fonts/Raleway-Light.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Raleway";
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("./fonts/Raleway-Regular.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Raleway-semibold";
+    font-style: normal;
+    font-weight: 900;
+    font-display: block;
+    src: url("./fonts/Raleway-SemiBold.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Raleway-bold";
+    font-style: normal;
+    font-weight: 900;
+    font-display: block;
+    src: url("./fonts/Raleway-Bold.ttf") format("truetype");
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

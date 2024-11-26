@@ -1,0 +1,29 @@
+<div>
+    <h2>Create User Profile</h2>
+    <form>
+        <div>
+            <label for="travelType">Travel Type:</label>
+            <ul id="travelType" name="travelType">
+                <li value="bus">Bus</li>
+                <li value="metro">Metro</li>
+                <li value="other">Other</li>
+            </ul>
+        </div>
+        <div>
+            <label for="busPreference">Bus Preference:</label>
+            <input type="number" id="busPreference" name="busPreference" min="1" max="5">
+            <div>
+                <span class="star" (click)="rateBus(1)">★</span>
+                <span class="star" (click)="rateBus(2)">★</span>
+                <span class="star" (click)="rateBus(3)">★</span>
+                <span class="star" (click)="rateBus(4)">★</span>
+                <span class="star" (click)="rateBus(5)">★</span>
+            </div>
+        </div>
+        <div>
+            <label for="metroPreference">Metro Preference:</label>
+            <input type="number" id="metroPreference" name="metroPreference" min="1" max="5">
+        </div>
+        <button type="submit">Create Profile</button>
+    </form>
+</div>

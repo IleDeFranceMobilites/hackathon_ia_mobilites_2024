@@ -1,0 +1,36 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --max-warnings 0"
+  },
+  "dependencies": {
+    "@langchain/community": "^0.3.15",
+    "@langchain/core": "^0.3.18",
+    "@repo/ai-toolkit": "workspace:*",
+    "@repo/ui": "workspace:*",
+    "langchain": "^0.3.2",
+    "mammoth": "^1.8.0",
+    "next": "14.2.8",
+    "react": "catalog:react18",
+    "react-dom": "catalog:react18"
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "14.2.8",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/eslint": "catalog:",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:react18",
+    "@types/react-dom": "catalog:react18",
+    "autoprefixer": "^10",
+    "eslint": "catalog:",
+    "postcss": "^8",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:"
+  }
+}

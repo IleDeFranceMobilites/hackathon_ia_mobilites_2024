@@ -1,0 +1,19 @@
+[tool.poetry]
+package-mode = false
+name = "api-ml-model"
+version = "0.1.0"
+description = ""
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pylint = "^3.1.0"
+pandas = "^2.2.2"
+fastapi = {extras = ["standard"], version = "^0.115.5"}
+uvicorn = {extras = ["standard"], version = "^0.32.1"}
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

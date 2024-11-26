@@ -1,0 +1,85 @@
+version: '3'
+
+tasks:
+
+#########################
+## CD/CI Tasks — Setup
+#########################
+
+  install:
+    cmds:      
+      # Install pipx, needed for poetry
+      - apt-get update
+      - apt-get install -y pipx
+      - pipx ensurepath
+
+      # Install poetry
+      - pipx install poetry
+      - /root/.local/bin/poetry config virtualenvs.in-project true
+  
+      # Install tree
+      - apt-get update -y
+      - apt-get install -y tree
+
+      - task: install_task_completion
+
+      - echo 'Success 🥳 !'
+
+  install_task_completion:
+    internal: true
+    cmds:
+      - apt-get update -y
+      - apt-get install -y bash-completion
+
+      - # Add bash completion to task
+      - chmod +x .infra/assets/task.bash
+      - echo "source $(pwd)/.infra/assets/task.bash" >> ~/.bashrc
+
+      - echo "if [ -f /etc/bash_completion ]; then" >> ~/.bashrc
+      - echo "    . /etc/bash_completion" >> ~/.bashrc
+      - echo "fi" >> ~/.bashrc
+
+
+
+#########################
+## CD/CI Tasks — Run
+#########################
+
+
+
+#########################
+## Other Notes and Tasks
+#########################
+
+  install_in_windows:
+    cmds:
+      - # Install databricks cli
+      - |
+        # Install poetry
+        
+        Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+        Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+
+        # Install python
+        # https://www.python.org/downloads/release/python-3118/
+
+        # OR
+        # https://www.python.org/ftp/python/3.11.9/python-3.11.9-embed-amd64.zip
+
+        # OR
+        # https://winpython.github.io/
+        # Needs: https://www.7-zip.org/a/7zr.exe
+
+        
+        scoop install pipx
+        pipx ensurepath
+        
+        pipx install poetry
+        poetry config virtualenvs.in-project true
+
+        # Ctrl+Shift+P Python: Select Interpreter
+
+        # Install Git for Windows
+
+        # Install task for Windows
+

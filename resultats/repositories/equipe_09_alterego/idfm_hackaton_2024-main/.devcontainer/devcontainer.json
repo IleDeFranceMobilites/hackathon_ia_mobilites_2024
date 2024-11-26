@@ -1,0 +1,27 @@
+{
+	"name": "idfm_hackaton_2024",
+
+	"dockerComposeFile": ["../devcontainer-docker-compose.yaml"],
+	"service": "devcontainer",
+
+	"workspaceFolder": "/workspaces/idfm_hackaton_2024", // This is needed so that postCreateCommand can run in this same folder.
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+            "settings": {
+                "terminal.integrated.shell.linux": "/bin/bash"
+            },
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"ms-toolsai.jupyter",
+				"ms-python.python"
+			]
+		}
+	},
+    
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    }
+}

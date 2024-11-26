@@ -1,0 +1,7 @@
+# Need this to have Windows/Mac/Linux dev environments compatibility
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ahk text eol=crlf
+*.bash text eol=lf
+*.sh text eol=lf

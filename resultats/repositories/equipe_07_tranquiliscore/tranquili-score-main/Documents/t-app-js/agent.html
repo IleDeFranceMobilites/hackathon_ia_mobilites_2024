@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geographical Heatmap</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <link rel="stylesheet" href="style_agent.css">
+</head>
+
+<header>
+    <div class="navbar">
+        <div class="navbar-left">
+            <img src="ressources\IdFMobilités.svg.png" style="width:171px; margin: 10px;">
+        </div>
+        <div class="navbar-right">
+            <button>Vue agent</button>
+        </div>
+    </div>
+    
+</header>
+
+<body>
+    <div id="map">
+        <!-- Légende -->
+        <div id="legend" class="legend">
+          <h3>Tranquili'score</h3>
+          <div style="margin-bottom: 10px;">
+            <img src="ressources/visage_rieur.png" alt="Safe" class="green-smiley">
+          </div>
+          <div style="margin-bottom: 10px;">
+            <img src="ressources/visage_sourire.png" alt="Sûr" class="green-smiley">
+          </div>
+          <div style="margin-bottom: 10px;">
+            <img src="ressources/visage_neutre.png" alt="Neutral" class="yellow-smiley">
+          </div>
+          <div style="margin-bottom: 10px;">
+            <img src="ressources/visage_inquiet.png" alt="Unsafe" class="yellow-smiley">
+          </div>
+          <div style="margin-bottom: 10px;">
+            <img src="ressources/visage_effrayé.png" alt="Risky" class="red-smiley">
+          </div>
+        </div>
+
+        <!-- Sélecteur de date -->
+            <div id="dateSelector" class="date-select">
+                <label for="date" style="margin-right: 10px;">Sélectionner une date :</label>
+                <input type="datetime-local" id="date" name="date" value="2024-11-21 05:00:00" style="padding: 5px; border-radius: 5px;">
+            </div>
+      </div>
+    <script src="heatmap.js"></script>
+    <div class="button-container">
+        <input type="file" id="fileInput" accept=".csv">
+        <button onclick="loadCSV()">Charger CSV</button>
+    </div>
+</body>
+
+<script src="script_agent.js"></script>
+
+</html>
+

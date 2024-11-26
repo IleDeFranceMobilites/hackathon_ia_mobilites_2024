@@ -1,0 +1,4 @@
+*.wav
+__pycache__
+*.ipynb
+api_key.py
