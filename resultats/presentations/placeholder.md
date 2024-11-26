@@ -1,0 +1,1 @@
+Proposition de répertoire pour stockage des présentations des équipes
