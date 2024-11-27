@@ -4055,7 +4055,7 @@ import json
 import pandas as pd
 
 # API key
-TOKEN = 'XDJujSkUHlvvCOirYONTwk9953G7thie'
+TOKEN = 'REMOVED'
 
 # Affectation des coordonnées au départ et à l'arrivée
 dlong = "2.357795224218518"
@@ -4125,8 +4125,8 @@ import requests
 import json
 import pandas as pd
 
-# TOKEN: XDJujSkUHlvvCOirYONTwk9953G7thie
-TOKEN = 'XDJujSkUHlvvCOirYONTwk9953G7thie'
+# TOKEN: REMOVED
+TOKEN = 'REMOVED'
 
 # Affectation des coordonnées au départ et à l'arrivée
 dlong = "2.33792"
