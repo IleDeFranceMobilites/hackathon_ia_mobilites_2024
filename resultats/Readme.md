@@ -1,3 +1,5 @@
+![Logo du Hackathon IA et Mobilités](/images/Logo%20illustre_Hackathon%20IA%20Mobilites.jpg)
+
 # Les 🌟Pépites🌟 du Hackathon IA et Mobilités
 
 Bienvenue dans ce recueil de pépites issues du Hackathon IA et Mobilités organisé par Ile-de-France Mobilités. 
