@@ -927,7 +927,7 @@ embedding_model = AzureOpenAIEmbeddings(
 
 <div style="page-break-after: always;"></div>
 
-# 💡 Appel à un LLM, Données de validation, Conception de prompts, 
+# 💡 Appel à un LLM, Conception de prompts, 
 ## 🌟 Équipe : **equipe_01_accit_falc**
 ### 👨‍🏫 Description du code
 Ce fichier définit des configurations pour différents composants de l'application, y compris les modèles de langage (LLM), la base de données, et les modèles spécifiques à l'application. Il utilise Pydantic pour la validation et la gestion des configurations.
@@ -5728,12 +5728,12 @@ app.listen(9999, () => {
 
 <div style="page-break-after: always;"></div>
 
-# 💡 Données de validation, 
+# 💡 Validation de données, 
 ## 🌟 Équipe : **equipe_01_accit_falc**
 ### 👨‍🏫 Description du code
 Ce code définit un modèle de données nommé FalcScore utilisant Pydantic, qui est une bibliothèque de validation de données. Le modèle contient des listes de chaînes de caractères pour les catégories 'good', 'bad', et 'improve', ainsi qu'un score de type float.
 ### 🚌 Spécificités fonctionnelles
-Le modèle répond à un besoin fonctionnel de structuration et de Données de validation de score, ce qui est essentiel pour garantir l'intégrité des données dans l'application.
+Le modèle répond à un besoin fonctionnel de structuration et de validation de données de score, ce qui est essentiel pour garantir l'intégrité des données dans l'application.
 ### ✍ Réutilisabilité
 Le modèle FalcScore est réutilisable pour structurer et valider des données de score dans d'autres parties de l'application ou dans d'autres projets nécessitant une évaluation qualitative et quantitative.
 ### 📜 Snippet de code
@@ -5755,7 +5755,7 @@ class FalcScore(BaseModel):
 
 <div style="page-break-after: always;"></div>
 
-# 💡 Données de validation, 
+# 💡 Validation de données, 
 ## 🌟 Équipe : **equipe_05_mobilia**
 ### 👨‍🏫 Description du code
 Cette fonction gère une requête HTTP pour obtenir des directions. Elle extrait les paramètres de la requête, valide leur présence, et utilise une API externe pour récupérer et parser les informations de trajet.
@@ -5775,7 +5775,7 @@ async def get_directions(request: Request): ...
 
 <div style="page-break-after: always;"></div>
 
-# 💡 Données de validation, 
+# 💡 Validation de données, 
 ## 🌟 Équipe : **equipe_05_mobilia**
 ### 👨‍🏫 Description du code
 Fonction asynchrone pour vérifier ou désambiguïser une adresse en utilisant une API de géocodage.
